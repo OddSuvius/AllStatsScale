@@ -1,0 +1,31 @@
+Mods: {
+	AllStatsScaled: {
+		Configs: {
+			AllStatsScaledConfig: {
+				DisplayName: CONFIGURA��O DE ESCALA DE TODAS AS ESTAT�STICAS
+
+				SimulatedPlayers: {
+					Label: Jogadores Simulados
+					Tooltip: o n�mero de jogadores para os quais as estat�sticas dos monstros ser�o escalonadas
+				}
+
+				HealthMultiplier: {
+					Label: Multiplicador de Vida
+					Tooltip: Vida * VALOR
+				}
+
+				DamageMultiplier: {
+					Label: Multiplicador de Dano
+					Tooltip: Dano * VALOR
+				}
+
+				DefenseMultiplier: {
+					Label: Multiplicador de Defesa
+					Tooltip: Defesa * VALOR
+				}
+			}
+		}
+	}
+
+	// AllStatsScale.Configs.AllStatsScaledConfig.DisplayName: All Stats Scaled Config
+}

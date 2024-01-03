@@ -1,0 +1,31 @@
+Mods: {
+	AllStatsScaled: {
+		Configs: {
+			AllStatsScaledConfig: {
+				DisplayName: CONFIGURAZIONE SCALAMENTO STATISTICHE
+
+				SimulatedPlayers: {
+					Label: Giocatori Simulati
+					Tooltip: il numero di giocatori a cui le statistiche dei mostri si adatteranno
+				}
+
+				HealthMultiplier: {
+					Label: Moltiplicatore Salute
+					Tooltip: Salute * VALORE
+				}
+
+				DamageMultiplier: {
+					Label: Moltiplicatore Danno
+					Tooltip: Danno * VALORE
+				}
+
+				DefenseMultiplier: {
+					Label: Moltiplicatore Difesa
+					Tooltip: Difesa * VALORE
+				}
+			}
+		}
+	}
+
+	// AllStatsScale.Configs.AllStatsScaledConfig.DisplayName: All Stats Scaled Config
+}

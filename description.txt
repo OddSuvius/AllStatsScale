@@ -1,0 +1,10 @@
+Welcome to ALL STATS SCALED! a revolutionary modification for your favorite game Terraria that brings balance and challenge to your worlds' mobs! Say goodbye to static and boring mobs difficulty and hello to fun stat scaling that you dictate, scale mob's Health, scale mob's Damage and scale mob's Defense simulate the camaraderie of a full party and FIGHT OR BE FORGOTTEN!
+
+Features:
+Mobs HP Scaling: The essence of ASS (ALL STATS SCALED) lies in its ability to adjust and scale mobs stats based on the chosen number of simulated players and the value of the stats mulipliers.
+
+Compatibility with Existing Saves: Worried about your ongoing adventures? Fear not! ASS is designed to be compatible, allowing you to seamlessly integrate the mod into your ongoing campaigns.
+
+Get ready for an experience like never before with ASS.
+
+Check me out https://oddsuvius.github.io/

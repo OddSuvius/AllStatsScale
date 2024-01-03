@@ -1,0 +1,31 @@
+Mods: {
+	AllStatsScaled: {
+		Configs: {
+			AllStatsScaledConfig: {
+				DisplayName: ВСЕ ПАРАМЕТРЫ МАСШТАБИРОВАНИЯ конфиг
+
+				SimulatedPlayers: {
+					Label: Симулированные Игроки
+					Tooltip: количество игроков, к которым будут масштабироваться характеристики мобов
+				}
+
+				HealthMultiplier: {
+					Label: Множитель Здоровья
+					Tooltip: Здоровье * ЗНАЧЕНИЕ
+				}
+
+				DamageMultiplier: {
+					Label: Множитель Урона
+					Tooltip: Урон * ЗНАЧЕНИЕ
+				}
+
+				DefenseMultiplier: {
+					Label: Множитель Защиты
+					Tooltip: Защита * ЗНАЧЕНИЕ
+				}
+			}
+		}
+	}
+
+	// AllStatsScale.Configs.AllStatsScaledConfig.DisplayName: All Stats Scaled Config
+}

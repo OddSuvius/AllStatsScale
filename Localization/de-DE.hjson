@@ -1,0 +1,31 @@
+Mods: {
+	AllStatsScaled: {
+		Configs: {
+			AllStatsScaledConfig: {
+				DisplayName: ALLE STATISTIKEN SKALIEREN Konfiguration
+
+				SimulatedPlayers: {
+					Label: Simulierte Spieler
+					Tooltip: die Anzahl der Spieler, deren Werte sich auf die Monsterstatistiken auswirken werden
+				}
+
+				HealthMultiplier: {
+					Label: Lebenspunkte-Multiplikator
+					Tooltip: Lebenspunkte * WERT
+				}
+
+				DamageMultiplier: {
+					Label: Schadensmultiplikator
+					Tooltip: Schaden * WERT
+				}
+
+				DefenseMultiplier: {
+					Label: Verteidigungsmultiplikator
+					Tooltip: Verteidigung * WERT
+				}
+			}
+		}
+	}
+
+	// AllStatsScale.Configs.AllStatsScaledConfig.DisplayName: All Stats Scaled Config
+}

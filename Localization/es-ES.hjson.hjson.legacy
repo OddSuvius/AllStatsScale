@@ -1,0 +1,29 @@
+Mods: {
+	AllStatsScaled: {
+		Configs: {
+			AllStatsScaledConfig: {
+				DisplayName: CONFIGURACIÓN DE ESCALA DE TODAS LAS ESTADÍSTICAS
+
+				SimulatedPlayers: {
+					Label: Jugadores Simulados
+					Tooltip: la cantidad de jugadores a los que se escalonarán las estadísticas de los enemigos
+				}
+
+				HealthMultiplier: {
+					Label: Multiplicador de Salud
+					Tooltip: Salud * VALOR
+				}
+
+				DamageMultiplier: {
+					Label: Multiplicador de Daño
+					Tooltip: Daño * VALOR
+				}
+
+				DefenseMultiplier: {
+					Label: Multiplicador de Defensa
+					Tooltip: Defensa * VALOR
+				}
+			}
+		}
+	}
+}

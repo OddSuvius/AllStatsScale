@@ -1,0 +1,31 @@
+Mods: {
+	AllStatsScaled: {
+		Configs: {
+			AllStatsScaledConfig: {
+				DisplayName: ALL STATS SCALED Config
+
+				SimulatedPlayers: {
+					Label: Simulated Players
+					Tooltip: the number of players that the mobs stats will scale to
+				}
+
+				HealthMultiplier: {
+					Label: Health Multiplier
+					Tooltip: Health * VALUE
+				}
+
+				DamageMultiplier: {
+					Label: Damage Multiplier
+					Tooltip: Damage * VALUE
+				}
+
+				DefenseMultiplier: {
+					Label: Defense Multiplier
+					Tooltip: Defense * VALUE
+				}
+			}
+		}
+	}
+
+	AllStatsScale.Configs.AllStatsScaledConfig.DisplayName: All Stats Scaled Config
+}

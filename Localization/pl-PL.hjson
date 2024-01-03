@@ -1,0 +1,31 @@
+Mods: {
+	AllStatsScaled: {
+		Configs: {
+			AllStatsScaledConfig: {
+				DisplayName: WSZYSTKIE SKALOWANE STATYSTYKI Konfiguracja
+
+				SimulatedPlayers: {
+					Label: Symulowani Gracze
+					Tooltip: liczba graczy, do których statystyki przeciwników będą dostosowywane
+				}
+
+				HealthMultiplier: {
+					Label: Mnożnik Zdrowia
+					Tooltip: Zdrowie * WARTOŚĆ
+				}
+
+				DamageMultiplier: {
+					Label: Mnożnik Obrażeń
+					Tooltip: Obrażenia * WARTOŚĆ
+				}
+
+				DefenseMultiplier: {
+					Label: Mnożnik Obrony
+					Tooltip: Obrona * WARTOŚĆ
+				}
+			}
+		}
+	}
+
+	// AllStatsScale.Configs.AllStatsScaledConfig.DisplayName: All Stats Scaled Config
+}

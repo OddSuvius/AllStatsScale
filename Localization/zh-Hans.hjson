@@ -1,0 +1,31 @@
+Mods: {
+	AllStatsScaled: {
+		Configs: {
+			AllStatsScaledConfig: {
+				DisplayName: 所有属性比例配置
+
+				SimulatedPlayers: {
+					Label: 模拟玩家
+					Tooltip: 怪物属性将按比例缩放到的玩家数量
+				}
+
+				HealthMultiplier: {
+					Label: 生命值倍增器
+					Tooltip: 生命值 * 值
+				}
+
+				DamageMultiplier: {
+					Label: 伤害倍增器
+					Tooltip: 伤害 * 值
+				}
+
+				DefenseMultiplier: {
+					Label: 防御倍增器
+					Tooltip: 防御 * 值
+				}
+			}
+		}
+	}
+
+	// AllStatsScale.Configs.AllStatsScaledConfig.DisplayName: All Stats Scaled Config
+}

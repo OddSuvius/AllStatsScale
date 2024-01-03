@@ -1,0 +1,31 @@
+Mods: {
+	AllStatsScaled: {
+		Configs: {
+			AllStatsScaledConfig: {
+				DisplayName: CONFIGURATION D'�CHELLE DE TOUTES LES STATISTIQUES
+
+				SimulatedPlayers: {
+					Label: Joueurs Simul�s
+					Tooltip: le nombre de joueurs auxquels les statistiques des monstres seront ajust�es
+				}
+
+				HealthMultiplier: {
+					Label: Multiplicateur de Sant�
+					Tooltip: Sant� * VALEUR
+				}
+
+				DamageMultiplier: {
+					Label: Multiplicateur de D�g�ts
+					Tooltip: D�g�ts * VALEUR
+				}
+
+				DefenseMultiplier: {
+					Label: Multiplicateur de D�fense
+					Tooltip: D�fense * VALEUR
+				}
+			}
+		}
+	}
+
+	// AllStatsScale.Configs.AllStatsScaledConfig.DisplayName: All Stats Scaled Config
+}
