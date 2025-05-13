@@ -11,11 +11,11 @@ namespace AllStatsScaled
         [JsonIgnore]
         private int simulatedPlayers;
         [JsonIgnore]
-        private int healthMultiplier;
+        private float healthMultiplier;
         [JsonIgnore]
-        private int damageMultiplier;
+        private float damageMultiplier;
         [JsonIgnore]
-        private int defenseMultiplier;
+        private float defenseMultiplier;
 
 
         [LabelKey("$Mods.AllStatsScaled.Configs.AllStatsScaledConfig.SimulatedPlayers.Label"), TooltipKey("$Mods.AllStatsScaled.Configs.AllStatsScaledConfig.SimulatedPlayers.Tooltip")]
@@ -38,8 +38,10 @@ namespace AllStatsScaled
 
 
         [LabelKey("$Mods.AllStatsScaled.Configs.AllStatsScaledConfig.HealthMultiplier.Label"), TooltipKey("$Mods.AllStatsScaled.Configs.AllStatsScaledConfig.HealthMultiplier.Tooltip")]
-        [DefaultValue(1)]
-        public int HealthMultiplier
+        [DefaultValue(1f)]
+        [Range(0.05f, 10f)]
+        [Increment(0.05f)]
+        public float HealthMultiplier
         {
             get { return healthMultiplier; }
             set
@@ -55,8 +57,10 @@ namespace AllStatsScaled
             }
         }
         [LabelKey("$Mods.AllStatsScaled.Configs.AllStatsScaledConfig.DamageMultiplier.Label"), TooltipKey("$Mods.AllStatsScaled.Configs.AllStatsScaledConfig.DamageMultiplier.Tooltip")]
-        [DefaultValue(1)]
-        public int DamageMultiplier
+        [DefaultValue(1f)]
+        [Range(0.05f, 10f)]
+        [Increment(0.05f)]
+        public float DamageMultiplier
         {
             get { return damageMultiplier; }
             set
@@ -72,8 +76,10 @@ namespace AllStatsScaled
             }
         }
         [LabelKey("$Mods.AllStatsScaled.Configs.AllStatsScaledConfig.DefenseMultiplier.Label"), TooltipKey("$Mods.AllStatsScaled.Configs.AllStatsScaledConfig.DefenseMultiplier.Tooltip")]
-        [DefaultValue(1)]
-        public int DefenseMultiplier
+        [DefaultValue(1f)]
+        [Range(0.05f, 10f)]
+        [Increment(0.05f)]
+        public float DefenseMultiplier
         {
             get { return defenseMultiplier; }
             set
