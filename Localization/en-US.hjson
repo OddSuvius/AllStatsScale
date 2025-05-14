@@ -15,18 +15,23 @@ Mods: {
 				}
 
 				HealthPercent: {
-					Label: Health Percent
-					Tooltip: Health * VALUE% (100 is default)
+					Label: NPC Health Percent
+					Tooltip: NPC Health * VALUE% (100 is default)
 				}
 
 				DamagePercent: {
-					Label: Damage Percent
-					Tooltip: Damage * VALUE% (100 is default)
+					Label: NPC Damage Percent
+					Tooltip: NPC Damage * VALUE% (100 is default)
 				}
 
 				DefensePercent: {
-					Label: Defense Percent
-					Tooltip: Defense * VALUE% (100 is default)
+					Label: NPC Defense Percent
+					Tooltip: NPC Defense * VALUE% (100 is default)
+				}
+
+				PlayerSpeedPercent: {
+					Label: Player Speed
+					Tooltip: Player Speed * VALUE% (100 is default)
 				}
 			}
 		}

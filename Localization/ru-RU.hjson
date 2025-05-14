@@ -10,27 +10,32 @@ Mods: {
 				}
 
 				EnableSimulatedPlayers: {
-					// Label: Enable Simulated Players
-					// Tooltip: toggle if the game should calculate stats using the number of "Simulated Players" (off is default)
+					Label: Включить симулированных игроков
+					Tooltip: переключатель расчета характеристик по числу «симулированных игроков» (по умолчанию выключено)
 				}
 
 				HealthPercent: {
-					// Label: Health Percent
-					// Tooltip: Health * VALUE% (100 is default)
+					Label: Процент здоровья NPC
+					Tooltip: Здоровье NPC * ЗНАЧЕНИЕ% (по умолчанию 100)
 				}
 
 				DamagePercent: {
-					// Label: Damage Percent
-					// Tooltip: Damage * VALUE% (100 is default)
+					Label: Процент урона NPC
+					Tooltip: Урон NPC * ЗНАЧЕНИЕ% (по умолчанию 100)
 				}
 
 				DefensePercent: {
-					// Label: Defense Percent
-					// Tooltip: Defense * VALUE% (100 is default)
+					Label: Процент защиты NPC
+					Tooltip: Защита NPC * ЗНАЧЕНИЕ% (по умолчанию 100)
+				}
+
+				PlayerSpeedPercent: {
+					Label: Скорость игрока
+					Tooltip: Скорость игрока * ЗНАЧЕНИЕ% (по умолчанию 100)
 				}
 			}
 		}
 	}
 
-	// AllStatsScale.Configs.AllStatsScaledConfig.DisplayName: All Stats Scaled Config
+	AllStatsScale.Configs.AllStatsScaledConfig.DisplayName: All Stats Scaled Config
 }

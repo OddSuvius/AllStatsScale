@@ -2,35 +2,40 @@ Mods: {
 	AllStatsScaled: {
 		Configs: {
 			AllStatsScaledConfig: {
-				DisplayName: CONFIGURATION D'�CHELLE DE TOUTES LES STATISTIQUES
+				DisplayName: Configuration de mise à l’échelle de toutes les stats
 
 				SimulatedPlayers: {
-					Label: Joueurs Simul�s
-					Tooltip: le nombre de joueurs auxquels les statistiques des monstres seront ajust�es
+					Label: Joueurs simulés
+					Tooltip: Nombre de joueurs sur lequel les statistiques des ennemis seront basées
 				}
 
 				EnableSimulatedPlayers: {
-					// Label: Enable Simulated Players
-					// Tooltip: toggle if the game should calculate stats using the number of "Simulated Players" (off is default)
+					Label: Activer les joueurs simulés
+					Tooltip: Active ou non le calcul des statistiques en fonction du nombre de joueurs simulés (désactivé par défaut)
 				}
 
 				HealthPercent: {
-					// Label: Health Percent
-					// Tooltip: Health * VALUE% (100 is default)
+					Label: Pourcentage de santé des PNJ
+					Tooltip: Santé du PNJ * VALEUR% (100 par défaut)
 				}
 
 				DamagePercent: {
-					// Label: Damage Percent
-					// Tooltip: Damage * VALUE% (100 is default)
+					Label: Pourcentage de dégâts des PNJ
+					Tooltip: Dégâts du PNJ * VALEUR% (100 par défaut)
 				}
 
 				DefensePercent: {
-					// Label: Defense Percent
-					// Tooltip: Defense * VALUE% (100 is default)
+					Label: Pourcentage de défense des PNJ
+					Tooltip: Défense du PNJ * VALEUR% (100 par défaut)
+				}
+
+				PlayerSpeedPercent: {
+					Label: Vitesse du joueur
+					Tooltip: Vitesse du joueur * VALEUR% (100 par défaut)
 				}
 			}
 		}
 	}
 
-	// AllStatsScale.Configs.AllStatsScaledConfig.DisplayName: All Stats Scaled Config
+	AllStatsScale.Configs.AllStatsScaledConfig.DisplayName: All Stats Scaled Config
 }

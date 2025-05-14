@@ -26,6 +26,7 @@ namespace AllStatsScaled
             {
                 ModContent.GetInstance<AllStatsScaled>().Logger.Error("Could not find NPC.ScaleStats method");
             }
+
         }
 
         public static void UnloadILEdits()
@@ -34,7 +35,7 @@ namespace AllStatsScaled
             _scaleStatsHook = null;
         }
 
-        private static void HookScaleStats(ILContext il)
+            private static void HookScaleStats(ILContext il)
         {
             var cursor = new ILCursor(il);
             try

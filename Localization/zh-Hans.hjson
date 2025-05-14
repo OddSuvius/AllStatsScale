@@ -2,35 +2,40 @@ Mods: {
 	AllStatsScaled: {
 		Configs: {
 			AllStatsScaledConfig: {
-				DisplayName: 所有属性比例配置
+				DisplayName: 全部属性缩放配置
 
 				SimulatedPlayers: {
 					Label: 模拟玩家
-					Tooltip: 怪物属性将按比例缩放到的玩家数量
+					Tooltip: 怪物属性将按此玩家数量进行缩放
 				}
 
 				EnableSimulatedPlayers: {
-					// Label: Enable Simulated Players
-					// Tooltip: toggle if the game should calculate stats using the number of "Simulated Players" (off is default)
+					Label: 启用模拟玩家
+					Tooltip: 切换是否按“模拟玩家”数量计算属性（默认关闭）
 				}
 
 				HealthPercent: {
-					// Label: Health Percent
-					// Tooltip: Health * VALUE% (100 is default)
+					Label: NPC生命百分比
+					Tooltip: NPC生命值 × 百分比（默认100%）
 				}
 
 				DamagePercent: {
-					// Label: Damage Percent
-					// Tooltip: Damage * VALUE% (100 is default)
+					Label: NPC伤害百分比
+					Tooltip: NPC伤害 × 百分比（默认100%）
 				}
 
 				DefensePercent: {
-					// Label: Defense Percent
-					// Tooltip: Defense * VALUE% (100 is default)
+					Label: NPC防御百分比
+					Tooltip: NPC防御 × 百分比（默认100%）
+				}
+
+				PlayerSpeedPercent: {
+					Label: 玩家速度
+					Tooltip: 玩家速度 × 百分比（默认100%）
 				}
 			}
 		}
 	}
 
-	// AllStatsScale.Configs.AllStatsScaledConfig.DisplayName: All Stats Scaled Config
+	AllStatsScale.Configs.AllStatsScaledConfig.DisplayName: All Stats Scaled Config
 }

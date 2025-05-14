@@ -8,18 +8,18 @@ namespace AllStatsScaled
     {
         public override ConfigScope Mode => ConfigScope.ServerSide;
 
-
         [JsonIgnore]
         private bool enableSimulatedPlayers;
         [JsonIgnore]
         private int simulatedPlayers;
-        //switched from decimal multipliers to percent integers to avoid float precision errors
         [JsonIgnore]
         private int healthPercent;
         [JsonIgnore]
         private int damagePercent;
         [JsonIgnore]
         private int defensePercent;
+        [JsonIgnore]
+        private int playerSpeedPercent;
 
         // Number of simulated players (integer)
         [LabelKey("$Mods.AllStatsScaled.Configs.AllStatsScaledConfig.SimulatedPlayers.Label"), TooltipKey("$Mods.AllStatsScaled.Configs.AllStatsScaledConfig.SimulatedPlayers.Tooltip")]
@@ -38,17 +38,15 @@ namespace AllStatsScaled
             set => enableSimulatedPlayers = value;
         }
 
-        // Health multiplier as percentage (text input)
         [LabelKey("$Mods.AllStatsScaled.Configs.AllStatsScaledConfig.HealthPercent.Label"), TooltipKey("$Mods.AllStatsScaled.Configs.AllStatsScaledConfig.HealthPercent.Tooltip")]
         [DefaultValue(100)]
-        [Range(1, int.MaxValue)] 
+        [Range(1, int.MaxValue)]
         public int HealthPercent
         {
             get => healthPercent;
             set => healthPercent = value < 1 ? 1 : value;
         }
 
-        // Damage multiplier as percentage
         [LabelKey("$Mods.AllStatsScaled.Configs.AllStatsScaledConfig.DamagePercent.Label"), TooltipKey("$Mods.AllStatsScaled.Configs.AllStatsScaledConfig.DamagePercent.Tooltip")]
         [DefaultValue(100)]
         [Range(1, int.MaxValue)]
@@ -58,7 +56,6 @@ namespace AllStatsScaled
             set => damagePercent = value < 1 ? 1 : value;
         }
 
-        // Defense multiplier as percentage
         [LabelKey("$Mods.AllStatsScaled.Configs.AllStatsScaledConfig.DefensePercent.Label"), TooltipKey("$Mods.AllStatsScaled.Configs.AllStatsScaledConfig.DefensePercent.Tooltip")]
         [DefaultValue(100)]
         [Range(1, int.MaxValue)]
@@ -68,7 +65,15 @@ namespace AllStatsScaled
             set => defensePercent = value < 1 ? 1 : value;
         }
 
-        // Computed multipliers Revision: replaces float inputs with integer percentage points to avoid float precision errors (250 --> 250%==2.5x)
+        [LabelKey("$Mods.AllStatsScaled.Configs.AllStatsScaledConfig.PlayerSpeedPercent.Label"), TooltipKey("$Mods.AllStatsScaled.Configs.AllStatsScaledConfig.PlayerSpeedPercent.Tooltip")]
+        [DefaultValue(100)]
+        [Range(1, int.MaxValue)]
+        public int PlayerSpeedPercent
+        {
+            get => playerSpeedPercent;
+            set => playerSpeedPercent = value < 1 ? 1 : value;
+        }
+
         [JsonIgnore]
         public float HealthMultiplier => healthPercent * 0.01f;
 
@@ -78,12 +83,7 @@ namespace AllStatsScaled
         [JsonIgnore]
         public float DefenseMultiplier => defensePercent * 0.01f;
 
-
-
-    
-
-
-
-
+        [JsonIgnore]
+        public float PlayerSpeedMultiplier => playerSpeedPercent * 0.01f;
     }
 }
