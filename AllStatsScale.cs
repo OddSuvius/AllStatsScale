@@ -5,9 +5,9 @@ using Terraria.ID;
 using Terraria.ModLoader.Config;
 
 
-namespace AllStatsScaled
+namespace AllStatsScale
 {
-    public class AllStatsScaled : Mod
+    public class AllStatsScale : Mod
     {
         public override void Load()
         {

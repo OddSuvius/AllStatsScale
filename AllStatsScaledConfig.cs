@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using Terraria.ModLoader.Config;
 
-namespace AllStatsScaled
+namespace AllStatsScale
 {
     public class AllStatsScaledConfig : ModConfig
     {

@@ -1,6 +1,6 @@
 ﻿using Terraria.ModLoader;
 
-namespace AllStatsScaled
+namespace AllStatsScale
 {
     public class Player : ModPlayer
     {

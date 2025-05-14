@@ -9,7 +9,7 @@ using System.Reflection;
 using System.Linq; // Needed for FirstOrDefault
 using OpCodes = Mono.Cecil.Cil.OpCodes;
 
-namespace AllStatsScaled
+namespace AllStatsScale
 {
     public static class ILEdits
     {
@@ -24,7 +24,7 @@ namespace AllStatsScaled
             }
             else
             {
-                ModContent.GetInstance<AllStatsScaled>().Logger.Error("Could not find NPC.ScaleStats method");
+                ModContent.GetInstance<AllStatsScale>().Logger.Error("Could not find NPC.ScaleStats method");
             }
 
         }
@@ -59,7 +59,7 @@ namespace AllStatsScaled
                     // This part of the code (expert mode scaling) might not be reached if not in expert/master.
                     // If the hook should only modify stats at the end, this part might be conditional or more robustly targeted.
                     // For now, assume we always want to try this if the hook runs.
-                    ModContent.GetInstance<AllStatsScaled>().Logger.Warn("[AllStatsScaled] Could not find 'stfld NPC.statsAreScaledForThisManyPlayers'. Player count override might not apply if not in expert/master mode context.");
+                    ModContent.GetInstance<AllStatsScale>().Logger.Warn("[AllStatsScaled] Could not find 'stfld NPC.statsAreScaledForThisManyPlayers'. Player count override might not apply if not in expert/master mode context.");
                 }
                 else
                 {
@@ -164,7 +164,7 @@ namespace AllStatsScaled
                     var cfg = ModContent.GetInstance<AllStatsScaledConfig>();
                     if (cfg == null)
                     {
-                        ModContent.GetInstance<AllStatsScaled>()?.Logger.Warn("AllStatsScaledConfig is null in HookScaleStats (Part 2 delegate)");
+                        ModContent.GetInstance<AllStatsScale>()?.Logger.Warn("AllStatsScaledConfig is null in HookScaleStats (Part 2 delegate)");
                         return;
                     }
 
@@ -179,7 +179,7 @@ namespace AllStatsScaled
             }
             catch (Exception ex)
             {
-                var logger = ModContent.GetInstance<AllStatsScaled>()?.Logger;
+                var logger = ModContent.GetInstance<AllStatsScale>()?.Logger;
                 if (logger != null)
                 {
                     logger.Error($"[AllStatsScaled] IL hook failed in HookScaleStats: {ex.Message}\nStack Trace: {ex.StackTrace}");
