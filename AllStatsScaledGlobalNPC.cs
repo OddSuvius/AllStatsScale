@@ -80,9 +80,9 @@ namespace AllStatsScaled
                 {
                     npc.lifeMax = 6;
                 }
-                npc.lifeMax *= ModContent.GetInstance<AllStatsScaledConfig>().HealthMultiplier;
-                npc.damage *= ModContent.GetInstance<AllStatsScaledConfig>().DamageMultiplier;
-                npc.defense *= ModContent.GetInstance<AllStatsScaledConfig>().DefenseMultiplier;
+                npc.lifeMax = (int)(npc.lifeMax * ModContent.GetInstance<AllStatsScaledDecimalForkConfig>().HealthMultiplier);
+                npc.damage = (int)(npc.damage * ModContent.GetInstance<AllStatsScaledDecimalForkConfig>().DamageMultiplier);
+                npc.defense = (int)(npc.defense * ModContent.GetInstance<AllStatsScaledDecimalForkConfig>().DefenseMultiplier);
                 npc.life = npc.lifeMax;
                 npc.defDamage = npc.damage;
                 npc.defDefense = npc.defense;
