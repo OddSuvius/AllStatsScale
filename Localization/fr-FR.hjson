@@ -9,19 +9,24 @@ Mods: {
 					Tooltip: le nombre de joueurs auxquels les statistiques des monstres seront ajust�es
 				}
 
-				HealthMultiplier: {
-					Label: Multiplicateur de Sant�
-					Tooltip: Sant� * VALEUR
+				EnableSimulatedPlayers: {
+					// Label: Enable Simulated Players
+					// Tooltip: toggle if the game should calculate stats using the number of "Simulated Players" (off is default)
 				}
 
-				DamageMultiplier: {
-					Label: Multiplicateur de D�g�ts
-					Tooltip: D�g�ts * VALEUR
+				HealthPercent: {
+					// Label: Health Percent
+					// Tooltip: Health * VALUE% (100 is default)
 				}
 
-				DefenseMultiplier: {
-					Label: Multiplicateur de D�fense
-					Tooltip: D�fense * VALEUR
+				DamagePercent: {
+					// Label: Damage Percent
+					// Tooltip: Damage * VALUE% (100 is default)
+				}
+
+				DefensePercent: {
+					// Label: Defense Percent
+					// Tooltip: Defense * VALUE% (100 is default)
 				}
 			}
 		}

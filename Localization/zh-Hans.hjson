@@ -9,19 +9,24 @@ Mods: {
 					Tooltip: 怪物属性将按比例缩放到的玩家数量
 				}
 
-				HealthMultiplier: {
-					Label: 生命值倍增器
-					Tooltip: 生命值 * 值
+				EnableSimulatedPlayers: {
+					// Label: Enable Simulated Players
+					// Tooltip: toggle if the game should calculate stats using the number of "Simulated Players" (off is default)
 				}
 
-				DamageMultiplier: {
-					Label: 伤害倍增器
-					Tooltip: 伤害 * 值
+				HealthPercent: {
+					// Label: Health Percent
+					// Tooltip: Health * VALUE% (100 is default)
 				}
 
-				DefenseMultiplier: {
-					Label: 防御倍增器
-					Tooltip: 防御 * 值
+				DamagePercent: {
+					// Label: Damage Percent
+					// Tooltip: Damage * VALUE% (100 is default)
+				}
+
+				DefensePercent: {
+					// Label: Defense Percent
+					// Tooltip: Defense * VALUE% (100 is default)
 				}
 			}
 		}

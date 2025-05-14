@@ -9,19 +9,24 @@ Mods: {
 					Tooltip: liczba graczy, do których statystyki przeciwników będą dostosowywane
 				}
 
-				HealthMultiplier: {
-					Label: Mnożnik Zdrowia
-					Tooltip: Zdrowie * WARTOŚĆ
+				EnableSimulatedPlayers: {
+					// Label: Enable Simulated Players
+					// Tooltip: toggle if the game should calculate stats using the number of "Simulated Players" (off is default)
 				}
 
-				DamageMultiplier: {
-					Label: Mnożnik Obrażeń
-					Tooltip: Obrażenia * WARTOŚĆ
+				HealthPercent: {
+					// Label: Health Percent
+					// Tooltip: Health * VALUE% (100 is default)
 				}
 
-				DefenseMultiplier: {
-					Label: Mnożnik Obrony
-					Tooltip: Obrona * WARTOŚĆ
+				DamagePercent: {
+					// Label: Damage Percent
+					// Tooltip: Damage * VALUE% (100 is default)
+				}
+
+				DefensePercent: {
+					// Label: Defense Percent
+					// Tooltip: Defense * VALUE% (100 is default)
 				}
 			}
 		}

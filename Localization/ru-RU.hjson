@@ -9,19 +9,24 @@ Mods: {
 					Tooltip: количество игроков, к которым будут масштабироваться характеристики мобов
 				}
 
-				HealthMultiplier: {
-					Label: Множитель Здоровья
-					Tooltip: Здоровье * ЗНАЧЕНИЕ
+				EnableSimulatedPlayers: {
+					// Label: Enable Simulated Players
+					// Tooltip: toggle if the game should calculate stats using the number of "Simulated Players" (off is default)
 				}
 
-				DamageMultiplier: {
-					Label: Множитель Урона
-					Tooltip: Урон * ЗНАЧЕНИЕ
+				HealthPercent: {
+					// Label: Health Percent
+					// Tooltip: Health * VALUE% (100 is default)
 				}
 
-				DefenseMultiplier: {
-					Label: Множитель Защиты
-					Tooltip: Защита * ЗНАЧЕНИЕ
+				DamagePercent: {
+					// Label: Damage Percent
+					// Tooltip: Damage * VALUE% (100 is default)
+				}
+
+				DefensePercent: {
+					// Label: Defense Percent
+					// Tooltip: Defense * VALUE% (100 is default)
 				}
 			}
 		}

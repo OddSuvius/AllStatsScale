@@ -9,19 +9,24 @@ Mods: {
 					Tooltip: the number of players that the mobs stats will scale to
 				}
 
-				HealthMultiplier: {
-					Label: Health Multiplier
-					Tooltip: Health * VALUE
+				EnableSimulatedPlayers: {
+					Label: Enable Simulated Players
+					Tooltip: toggle if the game should calculate stats using the number of "Simulated Players" (off is default)
 				}
 
-				DamageMultiplier: {
-					Label: Damage Multiplier
-					Tooltip: Damage * VALUE
+				HealthPercent: {
+					Label: Health Percent
+					Tooltip: Health * VALUE% (100 is default)
 				}
 
-				DefenseMultiplier: {
-					Label: Defense Multiplier
-					Tooltip: Defense * VALUE
+				DamagePercent: {
+					Label: Damage Percent
+					Tooltip: Damage * VALUE% (100 is default)
+				}
+
+				DefensePercent: {
+					Label: Defense Percent
+					Tooltip: Defense * VALUE% (100 is default)
 				}
 			}
 		}

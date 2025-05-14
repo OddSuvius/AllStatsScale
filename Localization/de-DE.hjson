@@ -9,19 +9,24 @@ Mods: {
 					Tooltip: die Anzahl der Spieler, deren Werte sich auf die Monsterstatistiken auswirken werden
 				}
 
-				HealthMultiplier: {
-					Label: Lebenspunkte-Multiplikator
-					Tooltip: Lebenspunkte * WERT
+				EnableSimulatedPlayers: {
+					// Label: Enable Simulated Players
+					// Tooltip: toggle if the game should calculate stats using the number of "Simulated Players" (off is default)
 				}
 
-				DamageMultiplier: {
-					Label: Schadensmultiplikator
-					Tooltip: Schaden * WERT
+				HealthPercent: {
+					// Label: Health Percent
+					// Tooltip: Health * VALUE% (100 is default)
 				}
 
-				DefenseMultiplier: {
-					Label: Verteidigungsmultiplikator
-					Tooltip: Verteidigung * WERT
+				DamagePercent: {
+					// Label: Damage Percent
+					// Tooltip: Damage * VALUE% (100 is default)
+				}
+
+				DefensePercent: {
+					// Label: Defense Percent
+					// Tooltip: Defense * VALUE% (100 is default)
 				}
 			}
 		}

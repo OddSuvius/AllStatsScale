@@ -9,19 +9,24 @@ Mods: {
 					Tooltip: il numero di giocatori a cui le statistiche dei mostri si adatteranno
 				}
 
-				HealthMultiplier: {
-					Label: Moltiplicatore Salute
-					Tooltip: Salute * VALORE
+				EnableSimulatedPlayers: {
+					// Label: Enable Simulated Players
+					// Tooltip: toggle if the game should calculate stats using the number of "Simulated Players" (off is default)
 				}
 
-				DamageMultiplier: {
-					Label: Moltiplicatore Danno
-					Tooltip: Danno * VALORE
+				HealthPercent: {
+					// Label: Health Percent
+					// Tooltip: Health * VALUE% (100 is default)
 				}
 
-				DefenseMultiplier: {
-					Label: Moltiplicatore Difesa
-					Tooltip: Difesa * VALORE
+				DamagePercent: {
+					// Label: Damage Percent
+					// Tooltip: Damage * VALUE% (100 is default)
+				}
+
+				DefensePercent: {
+					// Label: Defense Percent
+					// Tooltip: Defense * VALUE% (100 is default)
 				}
 			}
 		}
