@@ -1,10 +1,21 @@
-Welcome to ALL STATS SCALED! a revolutionary modification for your favorite game Terraria that brings balance and challenge to your worlds' mobs! Say goodbye to static and boring mobs difficulty and hello to fun stat scaling that you dictate, scale mob's Health, scale mob's Damage and scale mob's Defense simulate the camaraderie of a full party and FIGHT OR BE FORGOTTEN!
+[b]Now supports decimals (e.g., percentages %)[/b]
 
-Features:
-Mobs Stat Scaling: The essence of ASS (ALL STATS SCALED) lies in its ability to adjust and scale mobs stats based on the chosen number of simulated players and the value of the stats mulipliers.
+[b]ALL STATS SCALED[/b]! This is a revolutionary mod made for your favorite game, [i]Terraria[/i], bringing balance and challenge to the enemies in your world! Say goodbye to static, boring enemy difficulty and welcome fun, customizable stat scaling—[b]you[/b] control how enemies scale in health, damage, and defense to simulate full team combat. [b]Fight or be forgotten![/b]
 
-Compatibility with Existing Saves: Worried about your ongoing adventures? Fear not! ASS is designed to be compatible, allowing you to seamlessly integrate the mod into your ongoing campaigns.
+[b]Features:[/b]
+[list]
+[*]Simulate player count to scale boss stats.
+[*]Adjust enemy NPCs’ health, defense, and damage.
+[*]Modify player movement speed.
+[/list]
 
-Get ready for an experience like never before with ASS.
+[b]Compatible with existing saves:[/b]  
+Worried it might affect your current adventure? Don’t be! The ASS mod is designed with compatibility in mind and integrates seamlessly with your game progress.
 
-Check me out https://oddsuvius.github.io/
+Get ready for an unprecedented gameplay experience with the [b]ASS Mod[/b]!
+
+[quote]
+tModLoader: All Stats Scaled  
+Developer: Suvius  
+Special thanks to SpasticDovah for contributing code!
+[/quote]
