@@ -4,7 +4,7 @@
 
 [b]Features:[/b]
 [list]
-[*]Simulate player count to scale boss stats.
+[*]Simulate player count to scale boss stats. (would not work in Classic or Journey modes)
 [*]Adjust enemy NPCs’ health, defense, and damage.
 [*]Modify player movement speed.
 [/list]
