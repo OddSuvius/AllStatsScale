@@ -8,12 +8,11 @@
 [*]Respawn time, boss fight respawn time, and instant respawn when the boss fight ends (multiplayer)
 [*]Player max health, defense, life regen, invincibility frames, knockback taken and speed
 [*]Every setting from 1% to 1000%, or type any value
-[*]Languages: English, German, Spanish, French, Italian, Polish, Brazilian Portuguese, Russian, Simplified Chinese
 [/list]
 
 Get ready for an unprecedented gameplay experience with the [b]ASS Mod[/b]!
 
-Want to support me? [url=https://ko-fi.com/suvius][img]https://storage.ko-fi.com/cdn/kofi2.png?v=3[/img][/url]
+Want to support me? [url=https://ko-fi.com/suvius][img]https://raw.githubusercontent.com/OddSuvius/AllStatsScale/main/.github/kofi.png[/img][/url]
 
 [h1]SPECIAL THANKS[/h1]
 [b]SpasticDovah[/b]
