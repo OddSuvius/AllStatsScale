@@ -1,6 +1,6 @@
 [b]Now supports decimals (e.g., percentages %)[/b]
 
-[b]ALL STATS SCALED[/b]! This is a revolutionary mod made for your favorite game, [i]Terraria[/i], bringing balance and challenge to the enemies in your world! Say goodbye to static, boring enemy difficulty and welcome fun, customizable stat scaling—[b]you[/b] control how enemies scale in health, damage, and defense to simulate full team combat. [b]Fight or be forgotten![/b]
+[b]All Stats Scaled Suvius'[/b]! This is a revolutionary mod made for your favorite game, [i]Terraria[/i], bringing balance and challenge to the enemies in your world! Say goodbye to static, boring enemy difficulty and welcome fun, customizable stat scaling—[b]you[/b] control how enemies scale in health, damage, and defense to simulate full team combat. [b]Fight or be forgotten![/b]
 
 [b]Features:[/b]
 [list]
@@ -15,7 +15,7 @@ Worried it might affect your current adventure? Don’t be! The ASS mod is desig
 Get ready for an unprecedented gameplay experience with the [b]ASS Mod[/b]!
 
 [quote]
-tModLoader: All Stats Scaled  
+tModLoader: All Stats Scaled Suvius'  
 Developer: Suvius  
 Special thanks to SpasticDovah for contributing code!
 [/quote]

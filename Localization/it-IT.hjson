@@ -2,40 +2,129 @@ Mods: {
 	AllStatsScaled: {
 		Configs: {
 			AllStatsScaledConfig: {
-				DisplayName: Configurazione di scala delle statistiche
+				DisplayName: Configurazione
+				ChangesApplyOnWorldLoad: All Stats Scaled Suvius': impostazioni modificate. Avranno effetto al prossimo caricamento del mondo.
+
+				Headers: {
+					EnemyStats:
+						'''
+						[c/FFD54F:Le modifiche hanno effetto al prossimo caricamento di un mondo.]
+						[i:1274] Statistiche dei nemici
+						'''
+					HostileProjectiles: "[i:41] Proiettili ostili"
+					BossesAndRespawn: "[i:3319] Boss e respawn"
+					Player: "[i:267] Giocatore"
+				}
 
 				SimulatedPlayers: {
 					Label: Giocatori simulati
-					Tooltip: Numero di giocatori a cui verranno adattate le statistiche dei nemici
+					Tooltip: Quanti giocatori il gioco finge siano online quando scala i nemici (1-255). Sostituisce il numero reale di giocatori finché «Attiva giocatori simulati» è attivo.
 				}
 
 				EnableSimulatedPlayers: {
-					Label: Abilita giocatori simulati
-					Tooltip: Attiva o disattiva il calcolo delle statistiche in base al numero di giocatori simulati (disattivato per impostazione predefinita)
+					Label: Attiva giocatori simulati
+					Tooltip:
+						'''
+						Scala i nemici come se fossero online tanti giocatori quanti indicati in «Giocatori simulati».
+						In multigiocatore sostituisce il numero reale di giocatori sul server: con 4 giocatori online e Giocatori simulati a 2, i nemici scalano per 2.
+						Riguarda soprattutto i boss: lo scaling multigiocatore vanilla aumenta la vita dei boss (e parte dei loro danni) per ogni giocatore in più.
+						Scalano anche i nemici della Luna a zucca e della Luna del gelo; i nemici normali non cambiano.
+						Funziona solo in modalità Esperto e Maestro, o in modalità Viaggio con difficoltà Esperto o superiore.
+						'''
 				}
 
 				HealthPercent: {
-					Label: Percentuale salute NPC
-					Tooltip: Salute NPC * VALORE% (100 � il valore predefinito)
+					Label: Vita dei nemici
+					Tooltip: Vita dei nemici * VALORE%
+				}
+
+				EnemyImmunityPercent: {
+					Label: Invincibilità dei nemici (i-frame)
+					Tooltip: Quanto restano invincibili i nemici dopo che li colpisci * VALORE%. Più basso fa colpire le tue armi più spesso.
 				}
 
 				DamagePercent: {
-					Label: Percentuale danni NPC
-					Tooltip: Danni NPC * VALORE% (100 � il valore predefinito)
+					Label: Danni da contatto dei nemici
+					Tooltip: Danni che i nemici infliggono toccandoti * VALORE%
+				}
+
+				ProjectileDamagePercent: {
+					Label: Danni dei proiettili nemici
+					Tooltip: Danni dei proiettili sparati da nemici e boss * VALORE%
+				}
+
+				EnemySpeedPercent: {
+					Label: Velocità di movimento dei nemici
+					Tooltip: Quanto si muovono veloci i nemici * VALORE%. Scala anche altezza del salto, velocità di caduta e quanto li spinge il contraccolpo.
+				}
+
+				EnemyProjectileSpeedPercent: {
+					Label: Velocità dei proiettili nemici
+					Tooltip: Quanto volano veloci i proiettili di nemici e boss * VALORE%. Quelli più veloci arrivano anche più lontano.
 				}
 
 				DefensePercent: {
-					Label: Percentuale difesa NPC
-					Tooltip: Difesa NPC * VALORE% (100 � il valore predefinito)
+					Label: Difesa dei nemici
+					Tooltip: Difesa dei nemici * VALORE%
+				}
+
+				PlayerMaxHealthPercent: {
+					Label: Vita massima del giocatore
+					Tooltip: Vita massima del giocatore * VALORE%. Mai sotto 1.
+				}
+
+				PlayerDefensePercent: {
+					Label: Difesa del giocatore
+					Tooltip: Difesa del giocatore * VALORE%.
+				}
+
+				PlayerLifeRegenPercent: {
+					Label: Rigenerazione vita del giocatore
+					Tooltip: Quanto velocemente ti curi nel tempo * VALORE%. I danni dei debuff non cambiano.
+				}
+
+				PlayerImmunityPercent: {
+					Label: Invincibilità del giocatore (i-frame)
+					Tooltip: Quanto resti invincibile dopo essere stato colpito * VALORE%.
+				}
+
+				PlayerKnockbackPercent: {
+					Label: Contraccolpo subito dal giocatore
+					Tooltip: Quanto ti spingono indietro i colpi * VALORE%.
+				}
+
+				PlayerRespawnPercent: {
+					Label: Tempo di respawn
+					Tooltip:
+						'''
+						Tempo prima del respawn * VALORE%.
+						Vanilla: 10 s, o 15 s in Esperto e Maestro. Ad esempio, 200% in Esperto = 30 s.
+						In multigiocatore, le morti vicino a un boss usano invece l'impostazione per le lotte contro i boss. Fino a circa 16 minuti.
+						'''
+				}
+
+				PlayerBossRespawnPercent: {
+					Label: Tempo di respawn contro i boss
+					Tooltip:
+						'''
+						Tempo prima del respawn dopo una morte vicino a un boss (entro circa 250 blocchi) in multigiocatore * VALORE%.
+						Vanilla: 20 s, o 30 s in Esperto e Maestro, raddoppiato nei mondi «for the worthy» se è online un altro giocatore. Ad esempio, 50% in Esperto = 15 s.
+						Gli eventi non contano, compresi il Disco volante marziano e il Dio delle torce. Fino a circa 16 minuti.
+						'''
+				}
+
+				RespawnWhenBossFightEnds: {
+					Label: Respawn a fine lotta contro il boss
+					Tooltip: In multigiocatore, se sei morto durante una lotta contro un boss, fai respawn appena non resta nessun boss vivo.
 				}
 
 				PlayerSpeedPercent: {
-					Label: Velocit� del giocatore
-					Tooltip: Velocit� del giocatore * VALORE% (100 � il valore predefinito)
+					Label: Velocità del giocatore
+					Tooltip: Velocità del giocatore * VALORE%
 				}
 			}
 		}
 	}
 
-	AllStatsScale.Configs.AllStatsScaledConfig.DisplayName: All Stats Scaled Config
+	AllStatsScale.Configs.AllStatsScaledConfig.DisplayName: Configurazione
 }

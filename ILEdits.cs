@@ -1,195 +1,199 @@
-﻿using MonoMod.Cil;
-using MonoMod.RuntimeDetour;
-using Mono.Cecil;
-using Mono.Cecil.Cil; // Required for Instruction
+﻿using System;
+using Mono.Cecil.Cil;
+using MonoMod.Cil;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
-using System;
-using System.Reflection;
-using System.Linq; // Needed for FirstOrDefault
-using OpCodes = Mono.Cecil.Cil.OpCodes;
 
 namespace AllStatsScale
 {
-    public static class ILEdits
+    // Edits NPC.ScaleStats, which runs once per NPC inside NPC.SetDefaults on every machine
+    // (server, and each client when it receives the NPC), so all machines compute the same stats from the synced server-side config.
+    public class ScaleStatsEdit : ModSystem
     {
-        private static ILHook _scaleStatsHook;
-
-        public static void ApplyILEdits()
+        public override void Load()
         {
-            var scaleStatsMethodInfo = typeof(NPC).GetMethod("ScaleStats", BindingFlags.Instance | BindingFlags.Public);
-            if (scaleStatsMethodInfo != null)
-            {
-                _scaleStatsHook = new ILHook(scaleStatsMethodInfo, HookScaleStats);
-            }
-            else
-            {
-                ModContent.GetInstance<AllStatsScale>().Logger.Error("Could not find NPC.ScaleStats method");
-            }
-
+            IL_NPC.ScaleStats += PatchScaleStats; // tModLoader removes IL hooks on unload
         }
 
-        public static void UnloadILEdits()
+        private void PatchScaleStats(ILContext il)
         {
-            _scaleStatsHook?.Dispose();
-            _scaleStatsHook = null;
-        }
+            var c = new ILCursor(il);
 
-            private static void HookScaleStats(ILContext il)
-        {
-            var cursor = new ILCursor(il);
-            try
+            // Part 1, C# 13195 (expert/master only):
+            //   num3 = (statsAreScaledForThisManyPlayers = (activePlayersCount.HasValue ? activePlayersCount.Value : GetActivePlayerCount()));
+            // Both ternary branches meet at the dup (IL_0108) with the player count on the stack. Replace it there, so the
+            // field (sent to clients, used by GetMyBalance) and num3 (used for the scaling) both get the simulated count.
+            if (!c.TryGotoNext(MoveType.After,
+                    i => i.MatchCall<NPC>(nameof(NPC.GetActivePlayerCount)),
+                    i => i.MatchDup()))
+                throw new ILPatchFailureException(Mod, il, null);
+            c.Index--;           // before the dup
+            c.MoveAfterLabels(); // the HasValue branch jumps to the dup; it must run our code too
+            c.EmitDelegate(static (int playerCount) =>
             {
-                // --- Part 1: Modify player count for scaling calculations ---
+                var cfg = WorldSettings.Current;
+                return cfg != null && cfg.EnableSimulatedPlayers ? cfg.SimulatedPlayers : playerCount;
+            });
 
-                // We need to find the point where 'num3' (locals[4]) is set.
-                // This happens at IL_0112: stloc.s locals[4]
-                // This is after 'statsAreScaledForThisManyPlayers' is set (IL_010B).
-                // We will inject *after* 'stloc.s locals[4]' to override num3.
+            // Part 2, C# 13212: defDefense = defense;  (last statement, IL_0198), then the final ret (IL_019d).
+            // Search for the ret instead of requiring it to be adjacent, so code another mod appends there doesn't break the match.
+            // No MoveAfterLabels: the early ret at IL_0041 (critters, town NPCs, lifeMax <= 5, damage == 0) stays unscaled, like vanilla's expert scaling.
+            if (!c.TryGotoNext(MoveType.After, i => i.MatchStfld<NPC>(nameof(NPC.defDefense))))
+                throw new ILPatchFailureException(Mod, il, null);
+            int lastStatement = c.Index;
+            if (!c.TryGotoNext(i => i.MatchRet()) || c.Index - lastStatement > 10)
+                throw new ILPatchFailureException(Mod, il, null);
+            c.EmitLdarg0();
+            c.EmitDelegate(static (NPC npc) =>
+            {
+                var cfg = WorldSettings.Current;
+                if (cfg == null) // ScaleStats can run while mods are still loading
+                    return;
 
-                // First, find a stable anchor before this point. The call to NPC.GetActivePlayerCount() or
-                // the stfld to statsAreScaledForThisManyPlayers are candidates.
-                // Let's find the 'stfld statsAreScaledForThisManyPlayers'.
-                if (!cursor.TryGotoNext(MoveType.After, instr => // MoveType.After places cursor after this instruction
-                    instr.OpCode == OpCodes.Stfld &&
-                    instr.Operand is FieldReference fr &&
-                    fr.Name == "statsAreScaledForThisManyPlayers" &&
-                    fr.DeclaringType.FullName == "Terraria.NPC"))
+                if (npc.type >= 0 && NPCID.Sets.ProjectileNPC[npc.type])
                 {
-                    // This part of the code (expert mode scaling) might not be reached if not in expert/master.
-                    // If the hook should only modify stats at the end, this part might be conditional or more robustly targeted.
-                    // For now, assume we always want to try this if the hook runs.
-                    ModContent.GetInstance<AllStatsScale>().Logger.Warn("[AllStatsScaled] Could not find 'stfld NPC.statsAreScaledForThisManyPlayers'. Player count override might not apply if not in expert/master mode context.");
+                    // Projectile NPCs (Burning Sphere, Plantera's spores, Fishron's bubbles...) are enemy attacks: only their
+                    // hit damage scales, with the projectile setting.
+                    npc.damage = Scale(npc.damage, cfg.ProjectileDamagePercent);
                 }
                 else
                 {
-                    // Cursor is now after 'stfld NPC.statsAreScaledForThisManyPlayers' (after IL_010B).
-                    // The next key instruction is 'stloc.s V_8' then 'ldloc.s V_8' then 'stloc.s num3' (locals[4] at IL_0112).
-                    // We want to be after 'stloc.s num3'.
-                    if (!cursor.TryGotoNext(MoveType.After, instr => instr.MatchStloc(4) || (instr.OpCode == OpCodes.Stloc_S && instr.Operand is VariableDefinition vd && vd.Index == 4)))
-                    {
-                        throw new Exception("Could not find 'stloc.s num3' (locals[4]) after 'statsAreScaledForThisManyPlayers'");
-                    }
-
-                    // Cursor is now after 'stloc.s num3'.
-                    // The original 'num3' has been stored. Now we override it.
-                    // We need the NPC instance (ldarg.0) and the original activePlayersCount method parameter (ldarg.1).
-
-                    // Get the VariableDefinition for num3 (locals[4])
-                    var num3Variable = il.Body.Variables.FirstOrDefault(v => v.Index == 4);
-                    if (num3Variable == null)
-                    {
-                        throw new Exception("Could not find local variable 'num3' (index 4).");
-                    }
-
-                    cursor.Emit(OpCodes.Ldarg_0); // NPC instance for delegate
-                    cursor.Emit(OpCodes.Ldarg_1); // activePlayersCount (method argument ldarg.1) for delegate
-
-                    cursor.EmitDelegate<Func<NPC, Nullable<int>, int>>((npc, activePlayersCountArg) =>
-                    {
-                        int determinedPlayerCount;
-                        var cfg = ModContent.GetInstance<AllStatsScaledConfig>();
-
-                        if (cfg != null && cfg.EnableSimulatedPlayers)
-                        {
-                            if (cfg.SimulatedPlayers <= 0)
-                            {
-                                // If SimulatedPlayers is invalid, use actual active player count
-                                determinedPlayerCount = NPC.GetActivePlayerCount();
-                            }
-                            else
-                            {
-                                determinedPlayerCount = cfg.SimulatedPlayers;
-                            }
-                            // Update the NPC field directly with our chosen count
-                            npc.statsAreScaledForThisManyPlayers = determinedPlayerCount;
-                        }
-                        else
-                        {
-                            // Not using simulated players (or config is null), so num3 should reflect vanilla logic.
-                            // npc.statsAreScaledForThisManyPlayers was already set by vanilla code before our injection point.
-                            // We need to return the value that vanilla would have used for num3.
-                            if (!activePlayersCountArg.HasValue)
-                            {
-                                determinedPlayerCount = NPC.GetActivePlayerCount();
-                            }
-                            else
-                            {
-                                determinedPlayerCount = activePlayersCountArg.Value;
-                            }
-                            // In this case, npc.statsAreScaledForThisManyPlayers already holds this 'determinedPlayerCount'
-                            // due to the vanilla code that ran before this delegate.
-                        }
-                        return determinedPlayerCount; // This value will be stored into num3
-                    });
-
-                    cursor.Emit(OpCodes.Stloc_S, num3Variable); // Store the delegate's result back into 'num3'
+                    npc.lifeMax = Scale(npc.lifeMax, cfg.HealthPercent);
+                    npc.damage = Scale(npc.damage, cfg.DamagePercent);
+                    npc.defense = Scale(npc.defense, cfg.DefensePercent);
                 }
 
+                npc.life = npc.lifeMax;
+                npc.defDamage = npc.damage;
+                npc.defDefense = npc.defense;
+            });
+        }
 
-                // --- Part 2: Apply custom stat multipliers at the end of the method ---
-                // Reset cursor to find the *final* return.
-                // It's important that Part 1's cursor manipulations don't affect this search.
-                // Creating a new cursor for this part or carefully resetting Index is an option.
-                // The current approach reuses the cursor, which is fine as long as Part 1
-                // doesn't leave it in an unexpected state for the loop below.
-                // For safety, explicitly set to start of method if Part 1 might not find its target.
-                if (cursor.Next == null) // If Part 1 failed to find its target and didn't move cursor.
-                {
-                    cursor.Index = 0;
-                }
+        // Exact integer percent (100% leaves the value untouched). A positive stat never drops to 0, and 0 or negative stays as it is.
+        internal static int Scale(int value, int percent)
+        {
+            if (value <= 0)
+                return value;
+            return (int)Math.Clamp((long)value * percent / 100, 1, int.MaxValue);
+        }
+    }
 
+    // Edits NPC.UpdateNPC_Inner to scale how far enemies move each tick. Vanilla has no enemy speed stat (every AI hard-codes its
+    // own speeds), but all NPCs share one movement step after AI(). The velocity is scaled only around that step and restored
+    // afterwards, so the AI keeps seeing its own values and the scale never compounds. Runs on every machine that simulates the
+    // NPC (server and clients) with the synced server config, so they all move NPCs the same way.
+    public class EnemySpeedEdit : ModSystem
+    {
+        public override void Load()
+        {
+            IL_NPC.UpdateNPC_Inner += PatchUpdateNPC;
+        }
 
-                Instruction finalRetInstruction = null;
-                // Find the last 'ret' instruction by iterating from the end
-                for (int i = il.Instrs.Count - 1; i >= 0; i--)
-                {
-                    if (il.Instrs[i].OpCode == OpCodes.Ret)
-                    {
-                        finalRetInstruction = il.Instrs[i];
-                        break;
-                    }
-                }
+        private void PatchUpdateNPC(ILContext il)
+        {
+            var c = new ILCursor(il);
 
-                if (finalRetInstruction == null)
-                {
-                    throw new Exception("Could not find any method return (ret instruction) for Part 2");
-                }
+            // C# 88817-88825: if (!noTileCollide) UpdateCollision(); else { oldPosition = position; oldDirection = direction; position += velocity; ... }
+            // IL_0775 ldarg.0 / ldfld noTileCollide / brtrue.s IL_0788 / ldarg.0 / call UpdateCollision / br IL_0811 (both branches meet at IL_0811)
+            ILLabel join = null;
+            if (!c.TryGotoNext(MoveType.Before,
+                    i => i.MatchLdarg0(),
+                    i => i.MatchLdfld<NPC>(nameof(NPC.noTileCollide)),
+                    i => i.MatchBrtrue(out _),
+                    i => i.MatchLdarg0(),
+                    i => i.MatchCall<NPC>("UpdateCollision"),
+                    i => i.MatchBr(out join)))
+                throw new ILPatchFailureException(Mod, il, null);
 
-                cursor.Goto(finalRetInstruction, MoveType.Before);
+            var speed = new VariableDefinition(il.Import(typeof(float)));
+            il.Body.Variables.Add(speed);
 
-                cursor.Emit(OpCodes.Ldarg_0); // Load 'this' (the NPC instance)
-                cursor.EmitDelegate<Action<NPC>>(npc =>
-                {
-                    var cfg = ModContent.GetInstance<AllStatsScaledConfig>();
-                    if (cfg == null)
-                    {
-                        ModContent.GetInstance<AllStatsScale>()?.Logger.Warn("AllStatsScaledConfig is null in HookScaleStats (Part 2 delegate)");
-                        return;
-                    }
-
-                    npc.lifeMax = Math.Max(1, (int)Math.Min((long)(npc.lifeMax * cfg.HealthMultiplier), int.MaxValue));
-                    npc.damage = Math.Max(1, (int)Math.Min((long)(npc.damage * cfg.DamageMultiplier), int.MaxValue));
-                    npc.defense = Math.Max(1, (int)Math.Min((long)(npc.defense * cfg.DefenseMultiplier), int.MaxValue));
-
-                    npc.life = npc.lifeMax;
-                    npc.defDamage = npc.damage;
-                    npc.defDefense = npc.defense;
-                });
-            }
-            catch (Exception ex)
+            c.MoveAfterLabels(); // three branches jump to this if; they must all scale
+            c.EmitLdarg0();
+            c.EmitDelegate(static (NPC npc) =>
             {
-                var logger = ModContent.GetInstance<AllStatsScale>()?.Logger;
-                if (logger != null)
-                {
-                    logger.Error($"[AllStatsScaled] IL hook failed in HookScaleStats: {ex.Message}\nStack Trace: {ex.StackTrace}");
-                    if (il != null)
-                    {
-                        logger.Error($"Current IL instructions for {il.Method.FullName}:\n{il.ToString()}");
-                    }
-                }
-                throw;
-            }
+                float scale = SpeedScale(npc);
+                npc.velocity *= scale;
+                return scale;
+            });
+            c.EmitStloc(speed);
+
+            c.GotoLabel(join); // AfterLabel: both branches now run the restore before IL_0811
+            c.EmitLdarg0();
+            c.EmitLdloc(speed);
+            c.EmitDelegate(static (NPC npc, float scale) =>
+            {
+                npc.velocity /= scale;
+                if (!npc.noTileCollide)
+                    npc.oldVelocity /= scale; // UpdateCollision copied the scaled velocity; bouncing AIs read it next tick
+            });
+        }
+
+        // Enemies only: friendly NPCs, town NPCs and critters keep vanilla movement.
+        // Projectile NPCs are enemy attacks, so they follow the projectile speed setting instead.
+        private static float SpeedScale(NPC npc)
+        {
+            if (!IsHostile(npc))
+                return 1f;
+            var cfg = WorldSettings.Current;
+            if (cfg == null)
+                return 1f;
+            return (NPCID.Sets.ProjectileNPC[npc.type] ? cfg.EnemyProjectileSpeedPercent : cfg.EnemySpeedPercent) / 100f;
+        }
+
+        // Everything that isn't friendly, a town NPC or a critter: enemies, bosses and their parts, and projectile NPCs.
+        internal static bool IsHostile(NPC npc) => !npc.friendly && !npc.townNPC && !NPCID.Sets.CountsAsCritter[npc.type];
+    }
+
+    // Edits Projectile.Update to scale how far enemy projectiles move each tick, the same way EnemySpeedEdit does for NPCs:
+    // the velocity is scaled only around HandleMovement (tile collision + moving) and restored afterwards, so projectile AI
+    // (homing, gravity, acceleration) keeps its own values. Runs once per update, so projectiles with extra updates scale per update.
+    public class EnemyProjectileSpeedEdit : ModSystem
+    {
+        public override void Load()
+        {
+            IL_Projectile.Update += PatchUpdate;
+        }
+
+        private void PatchUpdate(ILContext il)
+        {
+            var c = new ILCursor(il);
+
+            // C# 15176: HandleMovement(wetVelocity, out overrideWidth, out var overrideHeight);  (IL_121b ldarg.0 ... IL_1221 call)
+            if (!c.TryGotoNext(MoveType.Before,
+                    i => i.MatchLdarg0(),
+                    i => i.MatchLdloc(out _),
+                    i => i.MatchLdloca(out _),
+                    i => i.MatchLdloca(out _),
+                    i => i.MatchCall<Projectile>("HandleMovement")))
+                throw new ILPatchFailureException(Mod, il, null);
+
+            var speed = new VariableDefinition(il.Import(typeof(float)));
+            il.Body.Variables.Add(speed);
+
+            c.EmitLdarg0();
+            c.EmitDelegate(static (Projectile projectile) =>
+            {
+                float scale = SpeedScale(projectile);
+                projectile.velocity *= scale;
+                return scale;
+            });
+            c.EmitStloc(speed);
+
+            if (!c.TryGotoNext(MoveType.After, i => i.MatchCall<Projectile>("HandleMovement")))
+                throw new ILPatchFailureException(Mod, il, null);
+            c.EmitLdarg0();
+            c.EmitLdloc(speed);
+            c.EmitDelegate(static (Projectile projectile, float scale) => { projectile.velocity /= scale; });
+        }
+
+        private static float SpeedScale(Projectile projectile)
+        {
+            if (!projectile.TryGetGlobalProjectile(out EnemyProjectile mark) || !mark.FiredByEnemy)
+                return 1f;
+            var cfg = WorldSettings.Current;
+            return cfg == null ? 1f : cfg.EnemyProjectileSpeedPercent / 100f;
         }
     }
 }

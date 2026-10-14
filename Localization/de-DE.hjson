@@ -2,40 +2,129 @@ Mods: {
 	AllStatsScaled: {
 		Configs: {
 			AllStatsScaledConfig: {
-				DisplayName: Alle Werte skaliert Konfiguration
+				DisplayName: Einstellungen
+				ChangesApplyOnWorldLoad: All Stats Scaled Suvius': Einstellungen geändert. Sie gelten ab dem nächsten Laden der Welt.
+
+				Headers: {
+					EnemyStats:
+						'''
+						[c/FFD54F:Änderungen gelten ab dem nächsten Laden einer Welt.]
+						[i:1274] Gegnerwerte
+						'''
+					HostileProjectiles: "[i:41] Feindliche Projektile"
+					BossesAndRespawn: "[i:3319] Bosse & Wiederbelebung"
+					Player: "[i:267] Spieler"
+				}
 
 				SimulatedPlayers: {
 					Label: Simulierte Spieler
-					Tooltip: Anzahl der Spieler, auf die sich die Werte der Gegner skalieren
+					Tooltip: Wie viele Spieler das Spiel beim Skalieren der Gegner annimmt (1-255). Ersetzt die echte Spielerzahl, solange „Simulierte Spieler aktivieren“ an ist.
 				}
 
 				EnableSimulatedPlayers: {
 					Label: Simulierte Spieler aktivieren
-					Tooltip: Umschalten, ob das Spiel die Werte basierend auf der Anzahl simulierten Spieler berechnen soll (Standard: aus)
+					Tooltip:
+						'''
+						Gegner skalieren, als wären so viele Spieler online wie unter „Simulierte Spieler“ eingestellt.
+						Im Mehrspielermodus ersetzt das die echte Spielerzahl auf dem Server: Bei 4 Spielern online und Simulierte Spieler auf 2 skalieren die Gegner für 2.
+						Betrifft vor allem Bosse: Die Vanilla-Mehrspielerskalierung erhöht das Leben von Bossen (und teils ihren Schaden) für jeden weiteren Spieler.
+						Gegner von Kürbismond und Frostmond skalieren ebenfalls; normale Gegner bleiben unverändert.
+						Wirkt nur im Experten- und Meistermodus oder im Reisemodus ab Expertenschwierigkeit.
+						'''
 				}
 
 				HealthPercent: {
-					Label: NPC-Gesundheitsprozentsatz
-					Tooltip: NPC-Gesundheit * WERT% (100 ist Standard)
+					Label: Gegner-Leben
+					Tooltip: Leben der Gegner * WERT%
+				}
+
+				EnemyImmunityPercent: {
+					Label: Gegner-Unverwundbarkeit (I-Frames)
+					Tooltip: Wie lange Gegner nach deinem Treffer unverwundbar bleiben * WERT%. Weniger heißt: Deine Waffen treffen öfter.
 				}
 
 				DamagePercent: {
-					Label: NPC-Schadensprozentsatz
-					Tooltip: NPC-Schaden * WERT% (100 ist Standard)
+					Label: Gegner-Kontaktschaden
+					Tooltip: Schaden, den Gegner bei Berührung verursachen * WERT%
+				}
+
+				ProjectileDamagePercent: {
+					Label: Schaden feindlicher Projektile
+					Tooltip: Schaden von Projektilen, die Gegner und Bosse abfeuern * WERT%
+				}
+
+				EnemySpeedPercent: {
+					Label: Gegner-Bewegungstempo
+					Tooltip: Wie schnell sich Gegner bewegen * WERT%. Skaliert auch Sprunghöhe, Fallgeschwindigkeit und wie weit Rückstoß sie zurückwirft.
+				}
+
+				EnemyProjectileSpeedPercent: {
+					Label: Tempo feindlicher Projektile
+					Tooltip: Wie schnell Projektile von Gegnern und Bossen fliegen * WERT%. Schnellere Projektile fliegen auch weiter.
 				}
 
 				DefensePercent: {
-					Label: NPC-Verteidigungsprozentsatz
-					Tooltip: NPC-Verteidigung * WERT% (100 ist Standard)
+					Label: Gegner-Verteidigung
+					Tooltip: Verteidigung der Gegner * WERT%
+				}
+
+				PlayerMaxHealthPercent: {
+					Label: Maximales Leben des Spielers
+					Tooltip: Maximales Leben des Spielers * WERT%. Nie unter 1.
+				}
+
+				PlayerDefensePercent: {
+					Label: Spieler-Verteidigung
+					Tooltip: Verteidigung des Spielers * WERT%.
+				}
+
+				PlayerLifeRegenPercent: {
+					Label: Lebensregeneration des Spielers
+					Tooltip: Wie schnell du mit der Zeit heilst * WERT%. Schaden durch Debuffs bleibt unverändert.
+				}
+
+				PlayerImmunityPercent: {
+					Label: Spieler-Unverwundbarkeit (I-Frames)
+					Tooltip: Wie lange du nach einem Treffer unverwundbar bleibst * WERT%.
+				}
+
+				PlayerKnockbackPercent: {
+					Label: Erlittener Rückstoß
+					Tooltip: Wie weit dich Treffer zurückwerfen * WERT%.
+				}
+
+				PlayerRespawnPercent: {
+					Label: Wiederbelebungszeit
+					Tooltip:
+						'''
+						Zeit bis zur Wiederbelebung * WERT%.
+						Vanilla: 10 s, im Experten- und Meistermodus 15 s. Beispiel: 200 % im Expertenmodus = 30 s.
+						Stirbst du im Mehrspielermodus in Bossnähe, gilt stattdessen die Bosskampf-Einstellung. Maximal etwa 16 Minuten.
+						'''
+				}
+
+				PlayerBossRespawnPercent: {
+					Label: Wiederbelebungszeit im Bosskampf
+					Tooltip:
+						'''
+						Zeit bis zur Wiederbelebung nach einem Tod in Bossnähe (im Umkreis von etwa 250 Blöcken) im Mehrspielermodus * WERT%.
+						Vanilla: 20 s, im Experten- und Meistermodus 30 s, in „for the worthy“-Welten verdoppelt, wenn ein weiterer Spieler online ist. Beispiel: 50 % im Expertenmodus = 15 s.
+						Events zählen nicht, auch nicht die Marsianische Untertasse und der Fackelgott. Maximal etwa 16 Minuten.
+						'''
+				}
+
+				RespawnWhenBossFightEnds: {
+					Label: Wiederbeleben, wenn der Bosskampf endet
+					Tooltip: Bist du im Mehrspielermodus während eines Bosskampfs gestorben, wirst du wiederbelebt, sobald kein Boss mehr lebt.
 				}
 
 				PlayerSpeedPercent: {
-					Label: Spielergeschwindigkeit
-					Tooltip: Spielergeschwindigkeit * WERT% (100 ist Standard)
+					Label: Spielertempo
+					Tooltip: Bewegungstempo des Spielers * WERT%
 				}
 			}
 		}
 	}
 
-	AllStatsScale.Configs.AllStatsScaledConfig.DisplayName: All Stats Scaled Config
+	AllStatsScale.Configs.AllStatsScaledConfig.DisplayName: Einstellungen
 }

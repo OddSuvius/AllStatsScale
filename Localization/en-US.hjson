@@ -2,40 +2,129 @@ Mods: {
 	AllStatsScaled: {
 		Configs: {
 			AllStatsScaledConfig: {
-				DisplayName: ALL STATS SCALED Config
+				DisplayName: Config
+				ChangesApplyOnWorldLoad: All Stats Scaled Suvius': settings changed. They take effect the next time the world is loaded.
+
+				Headers: {
+					EnemyStats:
+						'''
+						[c/FFD54F:Changes take effect the next time a world is loaded.]
+						[i:1274] Enemy Stats
+						'''
+					HostileProjectiles: "[i:41] Hostile Projectiles"
+					BossesAndRespawn: "[i:3319] Bosses & Respawn"
+					Player: "[i:267] Player"
+				}
 
 				SimulatedPlayers: {
 					Label: Simulated Players
-					Tooltip: the number of players that the mobs stats will scale to
+					Tooltip: How many players the game pretends are online when it scales enemies (1-255). Used instead of the real player count while Enable Simulated Players is on.
 				}
 
 				EnableSimulatedPlayers: {
 					Label: Enable Simulated Players
-					Tooltip: toggle if the game should calculate stats using the number of "Simulated Players" (off is default)
+					Tooltip:
+						'''
+						Scale enemies as if "Simulated Players" were online.
+						In multiplayer this overrides the real number of players on the server: with 4 players online and Simulated Players at 2, enemies scale for 2.
+						Mainly affects bosses: vanilla multiplayer scaling raises boss health (and some boss damage) for each extra player.
+						Pumpkin Moon and Frost Moon enemies scale too; regular enemies are not changed.
+						Only works in Expert and Master mode, or Journey mode at Expert difficulty or higher.
+						'''
 				}
 
 				HealthPercent: {
-					Label: NPC Health Percent
-					Tooltip: NPC Health * VALUE% (100 is default)
+					Label: Enemy Health Percent
+					Tooltip: Enemy health * VALUE%
+				}
+
+				EnemyImmunityPercent: {
+					Label: Enemy Invincibility Frames Percent
+					Tooltip: How long enemies stay invincible after you hit them * VALUE%. Lower lets your weapons hit more often.
 				}
 
 				DamagePercent: {
-					Label: NPC Damage Percent
-					Tooltip: NPC Damage * VALUE% (100 is default)
+					Label: Enemy Contact Damage Percent
+					Tooltip: Damage enemies deal by touching you * VALUE%
+				}
+
+				ProjectileDamagePercent: {
+					Label: Enemy Projectile Damage Percent
+					Tooltip: Damage of projectiles fired by enemies and bosses * VALUE%
+				}
+
+				EnemySpeedPercent: {
+					Label: Enemy Movement Speed Percent
+					Tooltip: How fast enemies move * VALUE%. Also scales their jump height, fall speed and how far knockback pushes them.
+				}
+
+				EnemyProjectileSpeedPercent: {
+					Label: Enemy Projectile Speed Percent
+					Tooltip: How fast projectiles fired by enemies and bosses fly * VALUE%. Faster projectiles also reach further.
 				}
 
 				DefensePercent: {
-					Label: NPC Defense Percent
-					Tooltip: NPC Defense * VALUE% (100 is default)
+					Label: Enemy Defense Percent
+					Tooltip: Enemy defense * VALUE%
+				}
+
+				PlayerMaxHealthPercent: {
+					Label: Player Max Health Percent
+					Tooltip: Player max health * VALUE%. Never goes below 1.
+				}
+
+				PlayerDefensePercent: {
+					Label: Player Defense Percent
+					Tooltip: Player defense * VALUE%.
+				}
+
+				PlayerLifeRegenPercent: {
+					Label: Player Life Regen Percent
+					Tooltip: How fast you heal over time * VALUE%. Damage from debuffs is not affected.
+				}
+
+				PlayerImmunityPercent: {
+					Label: Player Invincibility Frames Percent
+					Tooltip: How long you stay invincible after getting hit * VALUE%.
+				}
+
+				PlayerKnockbackPercent: {
+					Label: Player Knockback Taken Percent
+					Tooltip: How far hits knock you back * VALUE%.
+				}
+
+				PlayerRespawnPercent: {
+					Label: Player Respawn Time Percent
+					Tooltip:
+						'''
+						Time until you respawn * VALUE%.
+						Vanilla: 10 s, or 15 s in Expert and Master. For example, 200% in Expert = 30 s.
+						Deaths near a boss in multiplayer use the boss fight setting instead. Up to about 16 minutes.
+						'''
+				}
+
+				PlayerBossRespawnPercent: {
+					Label: Player Boss Fight Respawn Time Percent
+					Tooltip:
+						'''
+						Time until you respawn after dying near a boss (within about 250 tiles) in multiplayer * VALUE%.
+						Vanilla: 20 s, or 30 s in Expert and Master, doubled in For the Worthy worlds when another player is online. For example, 50% in Expert = 15 s.
+						Events don't count, including the Martian Saucer and the Torch God. Up to about 16 minutes.
+						'''
+				}
+
+				RespawnWhenBossFightEnds: {
+					Label: Respawn When Boss Fight Ends
+					Tooltip: In multiplayer, if you died during a boss fight, you respawn as soon as no boss is left alive.
 				}
 
 				PlayerSpeedPercent: {
-					Label: Player Speed
-					Tooltip: Player Speed * VALUE% (100 is default)
+					Label: Player Speed Percent
+					Tooltip: Player Speed * VALUE%
 				}
 			}
 		}
 	}
 
-	AllStatsScale.Configs.AllStatsScaledConfig.DisplayName: All Stats Scaled Config
+	AllStatsScale.Configs.AllStatsScaledConfig.DisplayName: Config
 }

@@ -2,40 +2,129 @@ Mods: {
 	AllStatsScaled: {
 		Configs: {
 			AllStatsScaledConfig: {
-				DisplayName: Configuration de mise à l’échelle de toutes les stats
+				DisplayName: Configuration
+				ChangesApplyOnWorldLoad: All Stats Scaled Suvius' : réglages modifiés. Ils prendront effet au prochain chargement du monde.
+
+				Headers: {
+					EnemyStats:
+						'''
+						[c/FFD54F:Les changements prennent effet au prochain chargement d'un monde.]
+						[i:1274] Stats des ennemis
+						'''
+					HostileProjectiles: "[i:41] Projectiles hostiles"
+					BossesAndRespawn: "[i:3319] Boss et réapparition"
+					Player: "[i:267] Joueur"
+				}
 
 				SimulatedPlayers: {
 					Label: Joueurs simulés
-					Tooltip: Nombre de joueurs sur lequel les statistiques des ennemis seront basées
+					Tooltip: Nombre de joueurs que le jeu considère comme connectés pour adapter les ennemis (1-255). Remplace le vrai nombre de joueurs tant que « Activer les joueurs simulés » est activé.
 				}
 
 				EnableSimulatedPlayers: {
 					Label: Activer les joueurs simulés
-					Tooltip: Active ou non le calcul des statistiques en fonction du nombre de joueurs simulés (désactivé par défaut)
+					Tooltip:
+						'''
+						Adapte les ennemis comme si le nombre de « Joueurs simulés » était connecté.
+						En multijoueur, remplace le vrai nombre de joueurs du serveur : avec 4 joueurs connectés et Joueurs simulés à 2, les ennemis sont adaptés pour 2.
+						Concerne surtout les boss : en vanilla, chaque joueur supplémentaire augmente la vie des boss (et une partie de leurs dégâts).
+						Les ennemis de la Lune citrouille et de la Lune de givre sont aussi adaptés ; les ennemis normaux ne changent pas.
+						Fonctionne uniquement en mode Expert et Maître, ou en mode Voyage en difficulté Expert ou plus.
+						'''
 				}
 
 				HealthPercent: {
-					Label: Pourcentage de santé des PNJ
-					Tooltip: Santé du PNJ * VALEUR% (100 par défaut)
+					Label: Vie des ennemis
+					Tooltip: Vie des ennemis * VALEUR%
+				}
+
+				EnemyImmunityPercent: {
+					Label: Invincibilité des ennemis (i-frames)
+					Tooltip: Durée d'invincibilité des ennemis après vos coups * VALEUR%. Plus bas, vos armes touchent plus souvent.
 				}
 
 				DamagePercent: {
-					Label: Pourcentage de dégâts des PNJ
-					Tooltip: Dégâts du PNJ * VALEUR% (100 par défaut)
+					Label: Dégâts de contact des ennemis
+					Tooltip: Dégâts infligés par les ennemis au contact * VALEUR%
+				}
+
+				ProjectileDamagePercent: {
+					Label: Dégâts des projectiles ennemis
+					Tooltip: Dégâts des projectiles tirés par les ennemis et les boss * VALEUR%
+				}
+
+				EnemySpeedPercent: {
+					Label: Vitesse de déplacement des ennemis
+					Tooltip: Vitesse de déplacement des ennemis * VALEUR%. Modifie aussi leur hauteur de saut, leur vitesse de chute et la distance à laquelle le recul les repousse.
+				}
+
+				EnemyProjectileSpeedPercent: {
+					Label: Vitesse des projectiles ennemis
+					Tooltip: Vitesse des projectiles tirés par les ennemis et les boss * VALEUR%. Plus rapides, ils portent aussi plus loin.
 				}
 
 				DefensePercent: {
-					Label: Pourcentage de défense des PNJ
-					Tooltip: Défense du PNJ * VALEUR% (100 par défaut)
+					Label: Défense des ennemis
+					Tooltip: Défense des ennemis * VALEUR%
+				}
+
+				PlayerMaxHealthPercent: {
+					Label: Vie max. du joueur
+					Tooltip: Vie max. du joueur * VALEUR%. Jamais en dessous de 1.
+				}
+
+				PlayerDefensePercent: {
+					Label: Défense du joueur
+					Tooltip: Défense du joueur * VALEUR%.
+				}
+
+				PlayerLifeRegenPercent: {
+					Label: Régénération de vie du joueur
+					Tooltip: Vitesse à laquelle vous régénérez de la vie * VALEUR%. Les dégâts des debuffs ne changent pas.
+				}
+
+				PlayerImmunityPercent: {
+					Label: Invincibilité du joueur (i-frames)
+					Tooltip: Durée d'invincibilité après avoir été touché * VALEUR%.
+				}
+
+				PlayerKnockbackPercent: {
+					Label: Recul subi par le joueur
+					Tooltip: Distance à laquelle les coups vous repoussent * VALEUR%.
+				}
+
+				PlayerRespawnPercent: {
+					Label: Temps de réapparition
+					Tooltip:
+						'''
+						Temps avant de réapparaître * VALEUR%.
+						Vanilla : 10 s, ou 15 s en Expert et Maître. Exemple : 200 % en Expert = 30 s.
+						En multijoueur, une mort près d'un boss utilise à la place le réglage des combats de boss. Jusqu'à environ 16 minutes.
+						'''
+				}
+
+				PlayerBossRespawnPercent: {
+					Label: Temps de réapparition en combat de boss
+					Tooltip:
+						'''
+						Temps avant de réapparaître après une mort près d'un boss (à environ 250 blocs) en multijoueur * VALEUR%.
+						Vanilla : 20 s, ou 30 s en Expert et Maître, doublé dans les mondes « for the worthy » quand un autre joueur est connecté. Exemple : 50 % en Expert = 15 s.
+						Les événements ne comptent pas, y compris la Soucoupe martienne et le Dieu des torches. Jusqu'à environ 16 minutes.
+						'''
+				}
+
+				RespawnWhenBossFightEnds: {
+					Label: Réapparaître à la fin du combat de boss
+					Tooltip: En multijoueur, si vous êtes mort pendant un combat de boss, vous réapparaissez dès qu'il ne reste plus aucun boss en vie.
 				}
 
 				PlayerSpeedPercent: {
 					Label: Vitesse du joueur
-					Tooltip: Vitesse du joueur * VALEUR% (100 par défaut)
+					Tooltip: Vitesse du joueur * VALEUR%
 				}
 			}
 		}
 	}
 
-	AllStatsScale.Configs.AllStatsScaledConfig.DisplayName: All Stats Scaled Config
+	AllStatsScale.Configs.AllStatsScaledConfig.DisplayName: Configuration
 }

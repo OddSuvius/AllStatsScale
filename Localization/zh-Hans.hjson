@@ -2,40 +2,129 @@ Mods: {
 	AllStatsScaled: {
 		Configs: {
 			AllStatsScaledConfig: {
-				DisplayName: 全部属性缩放配置
+				DisplayName: 配置
+				ChangesApplyOnWorldLoad: All Stats Scaled Suvius'：设置已更改，将在下次加载世界时生效。
+
+				Headers: {
+					EnemyStats:
+						'''
+						[c/FFD54F:更改将在下次加载世界时生效。]
+						[i:1274] 敌怪属性
+						'''
+					HostileProjectiles: "[i:41] 敌对弹幕"
+					BossesAndRespawn: "[i:3319] Boss与重生"
+					Player: "[i:267] 玩家"
+				}
 
 				SimulatedPlayers: {
-					Label: 模拟玩家
-					Tooltip: 怪物属性将按此玩家数量进行缩放
+					Label: 模拟玩家数
+					Tooltip: 缩放敌怪时游戏假定在线的玩家数（1-255）。开启“启用模拟玩家”时代替实际玩家数。
 				}
 
 				EnableSimulatedPlayers: {
 					Label: 启用模拟玩家
-					Tooltip: 切换是否按“模拟玩家”数量计算属性（默认关闭）
+					Tooltip:
+						'''
+						按“模拟玩家数”设定的在线人数缩放敌怪。
+						多人模式下会代替服务器上的实际玩家数：4名玩家在线、模拟玩家数为2时，敌怪按2人缩放。
+						主要影响Boss：原版多人缩放会为每名额外玩家提高Boss的生命值（以及部分伤害）。
+						南瓜月和霜月的敌怪也会缩放；普通敌怪不受影响。
+						仅在专家模式和大师模式，或难度为专家及以上的旅行模式中生效。
+						'''
 				}
 
 				HealthPercent: {
-					Label: NPC生命百分比
-					Tooltip: NPC生命值 × 百分比（默认100%）
+					Label: 敌怪生命值
+					Tooltip: 敌怪生命值 * 数值%
+				}
+
+				EnemyImmunityPercent: {
+					Label: 敌怪无敌帧
+					Tooltip: 敌怪被你击中后的无敌时间 * 数值%。越低，你的武器命中越频繁。
 				}
 
 				DamagePercent: {
-					Label: NPC伤害百分比
-					Tooltip: NPC伤害 × 百分比（默认100%）
+					Label: 敌怪接触伤害
+					Tooltip: 敌怪碰到你时造成的伤害 * 数值%
+				}
+
+				ProjectileDamagePercent: {
+					Label: 敌怪弹幕伤害
+					Tooltip: 敌怪和Boss发射的弹幕伤害 * 数值%
+				}
+
+				EnemySpeedPercent: {
+					Label: 敌怪移动速度
+					Tooltip: 敌怪移动速度 * 数值%。同时影响跳跃高度、下落速度和被击退的距离。
+				}
+
+				EnemyProjectileSpeedPercent: {
+					Label: 敌怪弹幕速度
+					Tooltip: 敌怪和Boss发射的弹幕飞行速度 * 数值%。弹幕越快，射程也越远。
 				}
 
 				DefensePercent: {
-					Label: NPC防御百分比
-					Tooltip: NPC防御 × 百分比（默认100%）
+					Label: 敌怪防御
+					Tooltip: 敌怪防御 * 数值%
+				}
+
+				PlayerMaxHealthPercent: {
+					Label: 玩家最大生命值
+					Tooltip: 玩家最大生命值 * 数值%。最低为1。
+				}
+
+				PlayerDefensePercent: {
+					Label: 玩家防御
+					Tooltip: 玩家防御 * 数值%。
+				}
+
+				PlayerLifeRegenPercent: {
+					Label: 玩家生命再生
+					Tooltip: 你随时间回复生命的速度 * 数值%。减益造成的伤害不受影响。
+				}
+
+				PlayerImmunityPercent: {
+					Label: 玩家无敌帧
+					Tooltip: 你受击后的无敌时间 * 数值%。
+				}
+
+				PlayerKnockbackPercent: {
+					Label: 玩家受到的击退
+					Tooltip: 受击时被击退的距离 * 数值%。
+				}
+
+				PlayerRespawnPercent: {
+					Label: 玩家重生时间
+					Tooltip:
+						'''
+						重生前的等待时间 * 数值%。
+						原版：10秒，专家和大师模式为15秒。例如专家模式下200% = 30秒。
+						多人模式中在Boss附近死亡时改用Boss战重生时间。最长约16分钟。
+						'''
+				}
+
+				PlayerBossRespawnPercent: {
+					Label: Boss战重生时间
+					Tooltip:
+						'''
+						多人模式中在Boss附近（约250格内）死亡后的重生时间 * 数值%。
+						原版：20秒，专家和大师模式为30秒；在“for the worthy”世界中有其他玩家在线时翻倍。例如专家模式下50% = 15秒。
+						事件不算在内，包括火星飞碟和火把神。最长约16分钟。
+						'''
+				}
+
+				RespawnWhenBossFightEnds: {
+					Label: Boss战结束时重生
+					Tooltip: 多人模式中，如果你在Boss战中死亡，场上没有存活的Boss时会立即重生。
 				}
 
 				PlayerSpeedPercent: {
 					Label: 玩家速度
-					Tooltip: 玩家速度 × 百分比（默认100%）
+					Tooltip: 玩家速度 * 数值%
 				}
 			}
 		}
 	}
 
-	AllStatsScale.Configs.AllStatsScaledConfig.DisplayName: All Stats Scaled Config
+	AllStatsScale.Configs.AllStatsScaledConfig.DisplayName: 配置
 }

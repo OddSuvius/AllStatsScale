@@ -1,0 +1,130 @@
+Mods: {
+	AllStatsScaled: {
+		Configs: {
+			AllStatsScaledConfig: {
+				DisplayName: Configuración
+				ChangesApplyOnWorldLoad: All Stats Scaled Suvius': ajustes cambiados. Se aplicarán la próxima vez que se cargue el mundo.
+
+				Headers: {
+					EnemyStats:
+						'''
+						[c/FFD54F:Los cambios se aplican la próxima vez que se cargue un mundo.]
+						[i:1274] Estadísticas de enemigos
+						'''
+					HostileProjectiles: "[i:41] Proyectiles hostiles"
+					BossesAndRespawn: "[i:3319] Jefes y reaparición"
+					Player: "[i:267] Jugador"
+				}
+
+				SimulatedPlayers: {
+					Label: Jugadores simulados
+					Tooltip: Cuántos jugadores finge el juego que hay conectados al escalar a los enemigos (1-255). Se usa en lugar del número real de jugadores mientras «Activar jugadores simulados» esté activado.
+				}
+
+				EnableSimulatedPlayers: {
+					Label: Activar jugadores simulados
+					Tooltip:
+						'''
+						Escala a los enemigos como si hubiera tantos jugadores conectados como indica «Jugadores simulados».
+						En multijugador sustituye el número real de jugadores del servidor: con 4 jugadores conectados y Jugadores simulados en 2, los enemigos escalan para 2.
+						Afecta sobre todo a los jefes: el escalado multijugador vanilla sube la vida de los jefes (y parte de su daño) por cada jugador extra.
+						Los enemigos de la Luna calabaza y la Luna helada también escalan; los enemigos normales no cambian.
+						Solo funciona en modo Experto y Maestro, o en modo Viaje con dificultad Experto o superior.
+						'''
+				}
+
+				HealthPercent: {
+					Label: Vida de los enemigos
+					Tooltip: Vida de los enemigos * VALOR%
+				}
+
+				EnemyImmunityPercent: {
+					Label: Invencibilidad de los enemigos (i-frames)
+					Tooltip: Cuánto tiempo siguen invencibles los enemigos después de golpearlos * VALOR%. Más bajo hace que tus armas golpeen más seguido.
+				}
+
+				DamagePercent: {
+					Label: Daño por contacto de los enemigos
+					Tooltip: Daño que hacen los enemigos al tocarte * VALOR%
+				}
+
+				ProjectileDamagePercent: {
+					Label: Daño de proyectiles enemigos
+					Tooltip: Daño de los proyectiles que disparan enemigos y jefes * VALOR%
+				}
+
+				EnemySpeedPercent: {
+					Label: Velocidad de movimiento de los enemigos
+					Tooltip: Qué tan rápido se mueven los enemigos * VALOR%. También escala su altura de salto, su velocidad de caída y cuánto los empuja el retroceso.
+				}
+
+				EnemyProjectileSpeedPercent: {
+					Label: Velocidad de proyectiles enemigos
+					Tooltip: Qué tan rápido vuelan los proyectiles de enemigos y jefes * VALOR%. Los más rápidos también llegan más lejos.
+				}
+
+				DefensePercent: {
+					Label: Defensa de los enemigos
+					Tooltip: Defensa de los enemigos * VALOR%
+				}
+
+				PlayerMaxHealthPercent: {
+					Label: Vida máxima del jugador
+					Tooltip: Vida máxima del jugador * VALOR%. Nunca baja de 1.
+				}
+
+				PlayerDefensePercent: {
+					Label: Defensa del jugador
+					Tooltip: Defensa del jugador * VALOR%.
+				}
+
+				PlayerLifeRegenPercent: {
+					Label: Regeneración de vida del jugador
+					Tooltip: Qué tan rápido te curas con el tiempo * VALOR%. El daño de los debuffs no cambia.
+				}
+
+				PlayerImmunityPercent: {
+					Label: Invencibilidad del jugador (i-frames)
+					Tooltip: Cuánto tiempo sigues invencible después de recibir un golpe * VALOR%.
+				}
+
+				PlayerKnockbackPercent: {
+					Label: Retroceso recibido por el jugador
+					Tooltip: Cuánto te empujan los golpes * VALOR%.
+				}
+
+				PlayerRespawnPercent: {
+					Label: Tiempo de reaparición
+					Tooltip:
+						'''
+						Tiempo hasta reaparecer * VALOR%.
+						Vanilla: 10 s, o 15 s en Experto y Maestro. Por ejemplo, 200 % en Experto = 30 s.
+						En multijugador, las muertes cerca de un jefe usan en su lugar el ajuste de pelea contra jefes. Hasta unos 16 minutos.
+						'''
+				}
+
+				PlayerBossRespawnPercent: {
+					Label: Tiempo de reaparición en pelea contra jefes
+					Tooltip:
+						'''
+						Tiempo hasta reaparecer tras morir cerca de un jefe (a unos 250 bloques) en multijugador * VALOR%.
+						Vanilla: 20 s, o 30 s en Experto y Maestro, el doble en mundos «for the worthy» si hay otro jugador conectado. Por ejemplo, 50 % en Experto = 15 s.
+						Los eventos no cuentan, incluidos el Platillo marciano y el Dios de las antorchas. Hasta unos 16 minutos.
+						'''
+				}
+
+				RespawnWhenBossFightEnds: {
+					Label: Reaparecer al terminar la pelea contra el jefe
+					Tooltip: En multijugador, si moriste durante una pelea contra un jefe, reapareces en cuanto no quede ningún jefe vivo.
+				}
+
+				PlayerSpeedPercent: {
+					Label: Velocidad del jugador
+					Tooltip: Velocidad del jugador * VALOR%
+				}
+			}
+		}
+	}
+
+	AllStatsScale.Configs.AllStatsScaledConfig.DisplayName: Configuración
+}

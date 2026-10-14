@@ -2,40 +2,129 @@ Mods: {
 	AllStatsScaled: {
 		Configs: {
 			AllStatsScaledConfig: {
-				DisplayName: Konfiguracja skalowania statystyk
+				DisplayName: Konfiguracja
+				ChangesApplyOnWorldLoad: All Stats Scaled Suvius': zmieniono ustawienia. Zaczną działać po ponownym wczytaniu świata.
+
+				Headers: {
+					EnemyStats:
+						'''
+						[c/FFD54F:Zmiany zaczną działać po następnym wczytaniu świata.]
+						[i:1274] Statystyki przeciwników
+						'''
+					HostileProjectiles: "[i:41] Wrogie pociski"
+					BossesAndRespawn: "[i:3319] Bossowie i odrodzenie"
+					Player: "[i:267] Gracz"
+				}
 
 				SimulatedPlayers: {
 					Label: Symulowani gracze
-					Tooltip: Liczba graczy, do której będą skalowane statystyki potworów
+					Tooltip: Ilu graczy gra uznaje za obecnych online przy skalowaniu przeciwników (1-255). Zastępuje prawdziwą liczbę graczy, gdy „Włącz symulowanych graczy” jest włączone.
 				}
 
 				EnableSimulatedPlayers: {
 					Label: Włącz symulowanych graczy
-					Tooltip: Przełącz, czy gra ma obliczać statystyki na podstawie liczby „symulowanych graczy” (domyślnie wyłączone)
+					Tooltip:
+						'''
+						Skaluje przeciwników tak, jakby online było tylu graczy, ile ustawiono w „Symulowani gracze”.
+						W trybie wieloosobowym zastępuje prawdziwą liczbę graczy na serwerze: przy 4 graczach online i Symulowanych graczach na 2 przeciwnicy skalują się jak dla 2.
+						Dotyczy głównie bossów: vanillowe skalowanie w trybie wieloosobowym zwiększa zdrowie bossów (i część ich obrażeń) za każdego dodatkowego gracza.
+						Przeciwnicy z Dyniowego Księżyca i Mroźnego Księżyca też się skalują; zwykli przeciwnicy się nie zmieniają.
+						Działa tylko w trybie eksperta i mistrza albo w trybie podróży na poziomie trudności eksperta lub wyższym.
+						'''
 				}
 
 				HealthPercent: {
-					Label: Procent zdrowia NPC
-					Tooltip: Zdrowie NPC * WARTOŚĆ% (domyślnie 100)
+					Label: Zdrowie przeciwników
+					Tooltip: Zdrowie przeciwników * WARTOŚĆ%
+				}
+
+				EnemyImmunityPercent: {
+					Label: Nietykalność przeciwników (i-frame'y)
+					Tooltip: Jak długo przeciwnicy są nietykalni po twoim trafieniu * WARTOŚĆ%. Mniej = twoja broń trafia częściej.
 				}
 
 				DamagePercent: {
-					Label: Procent obrażeń NPC
-					Tooltip: Obrażenia NPC * WARTOŚĆ% (domyślnie 100)
+					Label: Obrażenia od kontaktu z przeciwnikami
+					Tooltip: Obrażenia, które przeciwnicy zadają przy dotknięciu * WARTOŚĆ%
+				}
+
+				ProjectileDamagePercent: {
+					Label: Obrażenia wrogich pocisków
+					Tooltip: Obrażenia pocisków wystrzeliwanych przez przeciwników i bossów * WARTOŚĆ%
+				}
+
+				EnemySpeedPercent: {
+					Label: Szybkość ruchu przeciwników
+					Tooltip: Jak szybko poruszają się przeciwnicy * WARTOŚĆ%. Skaluje też wysokość skoku, szybkość spadania i to, jak daleko odpycha ich odrzut.
+				}
+
+				EnemyProjectileSpeedPercent: {
+					Label: Szybkość wrogich pocisków
+					Tooltip: Jak szybko lecą pociski przeciwników i bossów * WARTOŚĆ%. Szybsze pociski lecą też dalej.
 				}
 
 				DefensePercent: {
-					Label: Procent obrony NPC
-					Tooltip: Obrona NPC * WARTOŚĆ% (domyślnie 100)
+					Label: Obrona przeciwników
+					Tooltip: Obrona przeciwników * WARTOŚĆ%
+				}
+
+				PlayerMaxHealthPercent: {
+					Label: Maksymalne zdrowie gracza
+					Tooltip: Maksymalne zdrowie gracza * WARTOŚĆ%. Nigdy poniżej 1.
+				}
+
+				PlayerDefensePercent: {
+					Label: Obrona gracza
+					Tooltip: Obrona gracza * WARTOŚĆ%.
+				}
+
+				PlayerLifeRegenPercent: {
+					Label: Regeneracja zdrowia gracza
+					Tooltip: Jak szybko leczysz się z czasem * WARTOŚĆ%. Obrażenia od debuffów się nie zmieniają.
+				}
+
+				PlayerImmunityPercent: {
+					Label: Nietykalność gracza (i-frame'y)
+					Tooltip: Jak długo jesteś nietykalny po otrzymaniu trafienia * WARTOŚĆ%.
+				}
+
+				PlayerKnockbackPercent: {
+					Label: Odrzut otrzymywany przez gracza
+					Tooltip: Jak daleko odrzucają cię trafienia * WARTOŚĆ%.
+				}
+
+				PlayerRespawnPercent: {
+					Label: Czas odrodzenia
+					Tooltip:
+						'''
+						Czas do odrodzenia * WARTOŚĆ%.
+						Vanilla: 10 s, a w trybie eksperta i mistrza 15 s. Na przykład 200% w trybie eksperta = 30 s.
+						W trybie wieloosobowym przy śmierci w pobliżu bossa obowiązuje zamiast tego ustawienie walki z bossem. Do około 16 minut.
+						'''
+				}
+
+				PlayerBossRespawnPercent: {
+					Label: Czas odrodzenia w walce z bossem
+					Tooltip:
+						'''
+						Czas do odrodzenia po śmierci w pobliżu bossa (w promieniu około 250 bloków) w trybie wieloosobowym * WARTOŚĆ%.
+						Vanilla: 20 s, a w trybie eksperta i mistrza 30 s, podwojony w światach „for the worthy”, gdy online jest inny gracz. Na przykład 50% w trybie eksperta = 15 s.
+						Wydarzenia się nie liczą, w tym Marsjański Spodek i Bóg Pochodni. Do około 16 minut.
+						'''
+				}
+
+				RespawnWhenBossFightEnds: {
+					Label: Odrodzenie po zakończeniu walki z bossem
+					Tooltip: W trybie wieloosobowym, jeśli zginiesz podczas walki z bossem, odrodzisz się, gdy nie zostanie żaden żywy boss.
 				}
 
 				PlayerSpeedPercent: {
 					Label: Szybkość gracza
-					Tooltip: Szybkość gracza * WARTOŚĆ% (domyślnie 100)
+					Tooltip: Szybkość gracza * WARTOŚĆ%
 				}
 			}
 		}
 	}
 
-	AllStatsScale.Configs.AllStatsScaledConfig.DisplayName: All Stats Scaled Config
+	AllStatsScale.Configs.AllStatsScaledConfig.DisplayName: Konfiguracja
 }

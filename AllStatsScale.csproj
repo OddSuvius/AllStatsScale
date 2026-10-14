@@ -7,7 +7,7 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Localization\de-DE.hjson" />
-    <None Remove="Localization\es-ES.hjson.hjson" />
+    <None Remove="Localization\es-ES.hjson" />
     <None Remove="Localization\fr-FR.hjson" />
     <None Remove="Localization\it-IT.hjson" />
     <None Remove="Localization\pl-PL.hjson" />
