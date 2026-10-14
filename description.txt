@@ -1,4 +1,4 @@
-[b]All Stats Scaled Suvius'[/b]! This is a revolutionary mod made for your favorite game, [i]Terraria[/i], bringing balance and challenge to the enemies in your world! Say goodbye to static, boring enemy difficulty and welcome fun, customizable stat scaling—[b]you[/b] control how enemies scale in health, damage, and defense to simulate full team combat. [b]Fight or be forgotten![/b]
+[b]All Stats Scaled Suvius'[/b]! This is a revolutionary mod made for your favorite game, [i]Terraria[/i], bringing balance and challenge to the enemies in your world! Say goodbye to static, boring enemy difficulty and welcome fun, customizable stat scaling [b]you[/b] control how enemies scale in health, damage, and defense to simulate full team combat. [b]Fight or be forgotten![/b]
 
 [b]Features:[/b]
 [list]
@@ -13,7 +13,3 @@
 Get ready for an unprecedented gameplay experience with the [b]ASS Mod[/b]!
 
 Want to support me? [url=https://ko-fi.com/suvius][img]https://raw.githubusercontent.com/OddSuvius/AllStatsScale/main/.github/kofi.png[/img][/url]
-
-[h1]SPECIAL THANKS[/h1]
-[b]SpasticDovah[/b]
-- For contributing code
