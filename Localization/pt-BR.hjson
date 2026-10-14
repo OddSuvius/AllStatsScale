@@ -8,7 +8,7 @@ Mods: {
 				Headers: {
 					EnemyStats:
 						'''
-						[c/FFD54F:As alterações entram em vigor na próxima vez que um mundo for carregado.]
+						[c/FFD54F:No multijogador, as alterações entram em vigor na próxima vez que o mundo for carregado.]
 						[i:1274] Atributos dos inimigos
 						'''
 					HostileProjectiles: "[i:41] Projéteis hostis"
@@ -29,7 +29,7 @@ Mods: {
 						No multijogador, substitui o número real de jogadores no servidor: com 4 jogadores online e Jogadores simulados em 2, os inimigos escalam para 2.
 						Afeta principalmente os chefes: o escalonamento multijogador vanilla aumenta a vida dos chefes (e parte do dano deles) para cada jogador a mais.
 						Inimigos da Lua de Abóbora e da Lua Congelada também escalam; inimigos comuns não mudam.
-						Só funciona nos modos Especialista e Mestre, ou no modo Jornada com dificuldade Especialista ou maior.
+						Só funciona nos modos Perito e Mestre, ou no modo Jornada com dificuldade Perito ou maior.
 						'''
 				}
 
@@ -98,7 +98,7 @@ Mods: {
 					Tooltip:
 						'''
 						Tempo até renascer * VALOR%.
-						Vanilla: 10 s, ou 15 s no Especialista e no Mestre. Por exemplo, 200% no Especialista = 30 s.
+						Vanilla: 10 s, ou 15 s no Perito e no Mestre. Por exemplo, 200% no Perito = 30 s.
 						No multijogador, mortes perto de um chefe usam a configuração de luta contra chefe. Até cerca de 16 minutos.
 						'''
 				}
@@ -108,7 +108,7 @@ Mods: {
 					Tooltip:
 						'''
 						Tempo até renascer depois de morrer perto de um chefe (a cerca de 250 blocos) no multijogador * VALOR%.
-						Vanilla: 20 s, ou 30 s no Especialista e no Mestre, dobrado em mundos “for the worthy” quando outro jogador está online. Por exemplo, 50% no Especialista = 15 s.
+						Vanilla: 20 s, ou 30 s no Perito e no Mestre, dobrado em mundos “for the worthy” quando outro jogador está online. Por exemplo, 50% no Perito = 15 s.
 						Eventos não contam, incluindo o Disco Marciano e o Deus das Tochas. Até cerca de 16 minutos.
 						'''
 				}

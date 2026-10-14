@@ -8,7 +8,7 @@ Mods: {
 				Headers: {
 					EnemyStats:
 						'''
-						[c/FFD54F:Changes take effect the next time a world is loaded.]
+						[c/FFD54F:In multiplayer, changes take effect the next time the world is loaded.]
 						[i:1274] Enemy Stats
 						'''
 					HostileProjectiles: "[i:41] Hostile Projectiles"

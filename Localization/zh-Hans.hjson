@@ -8,7 +8,7 @@ Mods: {
 				Headers: {
 					EnemyStats:
 						'''
-						[c/FFD54F:更改将在下次加载世界时生效。]
+						[c/FFD54F:多人模式中，更改将在下次加载世界时生效。]
 						[i:1274] 敌怪属性
 						'''
 					HostileProjectiles: "[i:41] 敌对弹幕"

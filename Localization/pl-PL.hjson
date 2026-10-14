@@ -8,7 +8,7 @@ Mods: {
 				Headers: {
 					EnemyStats:
 						'''
-						[c/FFD54F:Zmiany zaczną działać po następnym wczytaniu świata.]
+						[c/FFD54F:W trybie wieloosobowym zmiany zaczną działać po następnym wczytaniu świata.]
 						[i:1274] Statystyki przeciwników
 						'''
 					HostileProjectiles: "[i:41] Wrogie pociski"

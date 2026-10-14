@@ -24,11 +24,12 @@ namespace AllStatsScale
             return false;
         }
 
-        // Settings are frozen per world session (WorldSettings), so a change made inside a world only applies once the world is
-        // loaded again. Tell everyone in the world; on clients this runs when the server applies the host's change.
+        // In multiplayer the settings are frozen per world session (WorldSettings), so a change made inside a world only applies
+        // once the world is loaded again. Tell the players; this runs on clients when the server applies the host's change.
+        // Single player applies changes at once, so it needs no notice.
         public override void OnChanged()
         {
-            if (Main.netMode != NetmodeID.Server && !Main.gameMenu)
+            if (Main.netMode == NetmodeID.MultiplayerClient && !Main.gameMenu)
                 Main.NewText(Language.GetTextValue("Mods.AllStatsScaled.Configs.AllStatsScaledConfig.ChangesApplyOnWorldLoad"), 255, 213, 79);
         }
 
@@ -287,19 +288,21 @@ namespace AllStatsScale
         public float PlayerSpeedMultiplier => playerSpeedPercent * 0.01f;
     }
 
-    // The settings the current world runs with. Frozen when the world loads (single player, or the server) and sent to every
-    // client with the world data, which arrives before any NPC, so a player who joins late computes enemy stats exactly like
-    // the server did. Changes made during the session reach the live config but only apply the next time the world loads.
+    // The settings the current world runs with. In multiplayer the server freezes them when the world loads and sends them to
+    // every client with the world data, which arrives before any NPC, so a player who joins late computes enemy stats exactly
+    // like the server did. Changes made during the session reach the live config but only apply the next time the world loads.
+    // Single player uses the live config, so changes apply at once (enemies already alive keep the stats they spawned with).
     public class WorldSettings : ModSystem
     {
         private static AllStatsScaledConfig frozen;
 
-        // Outside a world (menus, mod loading) this is the live config, which is null while mods are still loading.
+        // In single player and outside a world (menus, mod loading) this is the live config, which is null while mods are still
+        // loading.
         public static AllStatsScaledConfig Current => frozen ?? ModContent.GetInstance<AllStatsScaledConfig>();
 
         public override void OnWorldLoad()
         {
-            if (Main.netMode != NetmodeID.MultiplayerClient) // clients get the server's copy in NetReceive
+            if (Main.netMode == NetmodeID.Server) // clients get the server's copy in NetReceive
                 frozen = Copy();
         }
 

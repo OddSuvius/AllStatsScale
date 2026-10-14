@@ -8,7 +8,7 @@ Mods: {
 				Headers: {
 					EnemyStats:
 						'''
-						[c/FFD54F:Les changements prennent effet au prochain chargement d'un monde.]
+						[c/FFD54F:En multijoueur, les changements prennent effet au prochain chargement du monde.]
 						[i:1274] Stats des ennemis
 						'''
 					HostileProjectiles: "[i:41] Projectiles hostiles"

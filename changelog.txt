@@ -1,11 +1,4 @@
-Version 2.0
-- Renamed to All Stats Scaled Suvius'
-- New enemy settings: movement speed and invincibility frames
-- New hostile projectile settings: projectile damage and speed
-- New player settings: max health, defense, life regen, invincibility frames and knockback taken
-- New respawn settings: respawn time, boss fight respawn time, and instant respawn when the boss fight ends (multiplayer)
-- Simulated Players fixed and capped at 255
-- Every setting goes from 1% to 1000%, or type any value
-- Reorganized config with sections
-- In multiplayer only the host can change settings, and changes apply the next time the world is loaded
-- Translated into English, German, Spanish, French, Italian, Polish, Brazilian Portuguese, Russian and Simplified Chinese
+Version 2.0.1
+- Single player: setting changes now apply right away. In multiplayer they still apply the next time the world is loaded, so everyone plays with the same values.
+- Brazilian Portuguese: Expert mode is now called "Perito", as in the game.
+- Added a small icon for the mod list.
