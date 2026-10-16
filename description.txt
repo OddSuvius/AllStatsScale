@@ -4,6 +4,7 @@
 [list]
 [*]Enemy health, defense, contact damage, movement speed and invincibility frames
 [*]Enemy projectile damage and speed
+[*]Boss health, defense and contact damage, separate from regular enemies
 [*]Simulate player count to scale boss stats (Expert and Master only)
 [*]Respawn time, boss fight respawn time, and instant respawn when the boss fight ends (multiplayer)
 [*]Player max health, defense, life regen, invincibility frames, knockback taken and speed
