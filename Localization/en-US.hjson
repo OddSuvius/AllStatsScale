@@ -68,6 +68,21 @@ Mods: {
 					Tooltip: Enemy defense * VALUE%
 				}
 
+				BossHealthPercent: {
+					Label: Boss Health Percent
+					Tooltip: Boss health * VALUE%. The Eater of Worlds and some boss parts and minions, like Skeletron's hands and the Creepers, count as regular enemies.
+				}
+
+				BossDefensePercent: {
+					Label: Boss Defense Percent
+					Tooltip: Boss defense * VALUE%. The Eater of Worlds and some boss parts and minions, like Skeletron's hands and the Creepers, count as regular enemies.
+				}
+
+				BossDamagePercent: {
+					Label: Boss Contact Damage Percent
+					Tooltip: Damage bosses deal by touching you * VALUE%. The Eater of Worlds and some boss parts and minions, like Skeletron's hands and the Creepers, count as regular enemies.
+				}
+
 				PlayerMaxHealthPercent: {
 					Label: Player Max Health Percent
 					Tooltip: Player max health * VALUE%. Never goes below 1.

@@ -68,6 +68,21 @@ Mods: {
 					Tooltip: Defensa de los enemigos * VALOR%
 				}
 
+				BossHealthPercent: {
+					Label: Vida de los jefes
+					Tooltip: Vida de los jefes * VALOR%. El Devoramundos y algunas partes y esbirros de jefes, como las manos de Esqueletrón y las Criaturas, cuentan como enemigos normales.
+				}
+
+				BossDefensePercent: {
+					Label: Defensa de los jefes
+					Tooltip: Defensa de los jefes * VALOR%. El Devoramundos y algunas partes y esbirros de jefes, como las manos de Esqueletrón y las Criaturas, cuentan como enemigos normales.
+				}
+
+				BossDamagePercent: {
+					Label: Daño por contacto de los jefes
+					Tooltip: Daño que hacen los jefes al tocarte * VALOR%. El Devoramundos y algunas partes y esbirros de jefes, como las manos de Esqueletrón y las Criaturas, cuentan como enemigos normales.
+				}
+
 				PlayerMaxHealthPercent: {
 					Label: Vida máxima del jugador
 					Tooltip: Vida máxima del jugador * VALOR%. Nunca baja de 1.

@@ -1,4 +1,3 @@
-Version 2.0.1
-- Single player: setting changes now apply right away. In multiplayer they still apply the next time the world is loaded, so everyone plays with the same values.
-- Brazilian Portuguese: Expert mode is now called "Perito", as in the game.
-- Added a small icon for the mod list.
+Version 2.1
+- New Boss Health, Boss Defense and Boss Contact Damage settings, so bosses can be scaled separately from regular enemies. The Eater of Worlds and some boss parts and minions, like Skeletron's hands and the Creepers, count as regular enemies.
+- The enemy health, defense and contact damage settings no longer apply to bosses. If you had raised them, set the boss settings too.

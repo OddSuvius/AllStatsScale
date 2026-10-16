@@ -68,6 +68,21 @@ Mods: {
 					Tooltip: Verteidigung der Gegner * WERT%
 				}
 
+				BossHealthPercent: {
+					Label: Boss-Leben
+					Tooltip: Leben der Bosse * WERT%. Der Weltenfresser und manche Teile und Diener von Bossen, wie Skeletrons Hände und die Kriecher, zählen als normale Gegner.
+				}
+
+				BossDefensePercent: {
+					Label: Boss-Verteidigung
+					Tooltip: Verteidigung der Bosse * WERT%. Der Weltenfresser und manche Teile und Diener von Bossen, wie Skeletrons Hände und die Kriecher, zählen als normale Gegner.
+				}
+
+				BossDamagePercent: {
+					Label: Boss-Kontaktschaden
+					Tooltip: Schaden, den Bosse bei Berührung verursachen * WERT%. Der Weltenfresser und manche Teile und Diener von Bossen, wie Skeletrons Hände und die Kriecher, zählen als normale Gegner.
+				}
+
 				PlayerMaxHealthPercent: {
 					Label: Maximales Leben des Spielers
 					Tooltip: Maximales Leben des Spielers * WERT%. Nie unter 1.

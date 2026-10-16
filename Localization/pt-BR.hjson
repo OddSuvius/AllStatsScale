@@ -68,6 +68,21 @@ Mods: {
 					Tooltip: Defesa dos inimigos * VALOR%
 				}
 
+				BossHealthPercent: {
+					Label: Vida dos chefes
+					Tooltip: Vida dos chefes * VALOR%. O Devorador de Mundos e algumas partes e lacaios de chefes, como as mãos do Esqueletron e os Creepers, contam como inimigos normais.
+				}
+
+				BossDefensePercent: {
+					Label: Defesa dos chefes
+					Tooltip: Defesa dos chefes * VALOR%. O Devorador de Mundos e algumas partes e lacaios de chefes, como as mãos do Esqueletron e os Creepers, contam como inimigos normais.
+				}
+
+				BossDamagePercent: {
+					Label: Dano de contato dos chefes
+					Tooltip: Dano que os chefes causam ao encostar em você * VALOR%. O Devorador de Mundos e algumas partes e lacaios de chefes, como as mãos do Esqueletron e os Creepers, contam como inimigos normais.
+				}
+
 				PlayerMaxHealthPercent: {
 					Label: Vida máxima do jogador
 					Tooltip: Vida máxima do jogador * VALOR%. Nunca fica abaixo de 1.

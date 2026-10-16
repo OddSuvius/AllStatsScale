@@ -68,6 +68,21 @@ Mods: {
 					Tooltip: Obrona przeciwników * WARTOŚĆ%
 				}
 
+				BossHealthPercent: {
+					Label: Zdrowie bossów
+					Tooltip: Zdrowie bossów * WARTOŚĆ%. Pożeracz Światów oraz niektóre części i sługi bossów, takie jak ręce Szkieletrona i Pełzaki, są traktowane jak zwykli przeciwnicy.
+				}
+
+				BossDefensePercent: {
+					Label: Obrona bossów
+					Tooltip: Obrona bossów * WARTOŚĆ%. Pożeracz Światów oraz niektóre części i sługi bossów, takie jak ręce Szkieletrona i Pełzaki, są traktowane jak zwykli przeciwnicy.
+				}
+
+				BossDamagePercent: {
+					Label: Obrażenia od kontaktu z bossami
+					Tooltip: Obrażenia, które bossowie zadają przy dotknięciu * WARTOŚĆ%. Pożeracz Światów oraz niektóre części i sługi bossów, takie jak ręce Szkieletrona i Pełzaki, są traktowane jak zwykli przeciwnicy.
+				}
+
 				PlayerMaxHealthPercent: {
 					Label: Maksymalne zdrowie gracza
 					Tooltip: Maksymalne zdrowie gracza * WARTOŚĆ%. Nigdy poniżej 1.

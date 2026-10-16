@@ -52,6 +52,12 @@ namespace AllStatsScale
         [JsonIgnore]
         private int enemyImmunityPercent;
         [JsonIgnore]
+        private int bossHealthPercent;
+        [JsonIgnore]
+        private int bossDefensePercent;
+        [JsonIgnore]
+        private int bossDamagePercent;
+        [JsonIgnore]
         private int playerMaxHealthPercent;
         [JsonIgnore]
         private int playerDefensePercent;
@@ -157,6 +163,42 @@ namespace AllStatsScale
         }
 
         [Header("$Mods.AllStatsScaled.Configs.AllStatsScaledConfig.Headers.BossesAndRespawn")]
+        [LabelKey("$Mods.AllStatsScaled.Configs.AllStatsScaledConfig.BossHealthPercent.Label"), TooltipKey("$Mods.AllStatsScaled.Configs.AllStatsScaledConfig.BossHealthPercent.Tooltip")]
+        [DefaultValue(100)]
+        [Range(1, int.MaxValue)]
+        [CustomModConfigItem(typeof(PercentElement))]
+        [BackgroundColor(95, 75, 150)]
+        [SliderColor(255, 60, 60)]
+        public int BossHealthPercent
+        {
+            get => bossHealthPercent;
+            set => bossHealthPercent = value < 1 ? 1 : value;
+        }
+
+        [LabelKey("$Mods.AllStatsScaled.Configs.AllStatsScaledConfig.BossDefensePercent.Label"), TooltipKey("$Mods.AllStatsScaled.Configs.AllStatsScaledConfig.BossDefensePercent.Tooltip")]
+        [DefaultValue(100)]
+        [Range(1, int.MaxValue)]
+        [CustomModConfigItem(typeof(PercentElement))]
+        [BackgroundColor(95, 75, 150)]
+        [SliderColor(170, 170, 170)]
+        public int BossDefensePercent
+        {
+            get => bossDefensePercent;
+            set => bossDefensePercent = value < 1 ? 1 : value;
+        }
+
+        [LabelKey("$Mods.AllStatsScaled.Configs.AllStatsScaledConfig.BossDamagePercent.Label"), TooltipKey("$Mods.AllStatsScaled.Configs.AllStatsScaledConfig.BossDamagePercent.Tooltip")]
+        [DefaultValue(100)]
+        [Range(1, int.MaxValue)]
+        [CustomModConfigItem(typeof(PercentElement))]
+        [BackgroundColor(95, 75, 150)]
+        [SliderColor(255, 140, 40)]
+        public int BossDamagePercent
+        {
+            get => bossDamagePercent;
+            set => bossDamagePercent = value < 1 ? 1 : value;
+        }
+
         [LabelKey("$Mods.AllStatsScaled.Configs.AllStatsScaledConfig.EnableSimulatedPlayers.Label"), TooltipKey("$Mods.AllStatsScaled.Configs.AllStatsScaledConfig.EnableSimulatedPlayers.Tooltip")]
         [DefaultValue(false)]
         [BackgroundColor(95, 75, 150)]

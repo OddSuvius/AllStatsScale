@@ -68,6 +68,21 @@ Mods: {
 					Tooltip: 敌怪防御 * 数值%
 				}
 
+				BossHealthPercent: {
+					Label: Boss生命值
+					Tooltip: Boss生命值 * 数值%。世界吞噬怪以及部分Boss部件和仆从（如骷髅王的手和飞眼怪）算作普通敌怪。
+				}
+
+				BossDefensePercent: {
+					Label: Boss防御
+					Tooltip: Boss防御 * 数值%。世界吞噬怪以及部分Boss部件和仆从（如骷髅王的手和飞眼怪）算作普通敌怪。
+				}
+
+				BossDamagePercent: {
+					Label: Boss接触伤害
+					Tooltip: Boss碰到你时造成的伤害 * 数值%。世界吞噬怪以及部分Boss部件和仆从（如骷髅王的手和飞眼怪）算作普通敌怪。
+				}
+
 				PlayerMaxHealthPercent: {
 					Label: 玩家最大生命值
 					Tooltip: 玩家最大生命值 * 数值%。最低为1。

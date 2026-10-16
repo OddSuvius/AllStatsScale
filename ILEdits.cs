@@ -57,6 +57,14 @@ namespace AllStatsScale
                     // hit damage scales, with the projectile setting.
                     npc.damage = Scale(npc.damage, cfg.ProjectileDamagePercent);
                 }
+                else if (npc.boss)
+                {
+                    // The boss flag is set in SetDefaults (modded bosses' too) before this runs, so every machine agrees.
+                    // Parts and minions without it (Skeletron's hands, Creepers, every Eater of Worlds segment) use the enemy settings.
+                    npc.lifeMax = Scale(npc.lifeMax, cfg.BossHealthPercent);
+                    npc.damage = Scale(npc.damage, cfg.BossDamagePercent);
+                    npc.defense = Scale(npc.defense, cfg.BossDefensePercent);
+                }
                 else
                 {
                     npc.lifeMax = Scale(npc.lifeMax, cfg.HealthPercent);

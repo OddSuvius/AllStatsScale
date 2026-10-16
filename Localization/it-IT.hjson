@@ -68,6 +68,21 @@ Mods: {
 					Tooltip: Difesa dei nemici * VALORE%
 				}
 
+				BossHealthPercent: {
+					Label: Vita dei boss
+					Tooltip: Vita dei boss * VALORE%. Il Mangiatore di mondi e alcune parti e servitori dei boss, come le mani di Skeletron e gli Occhi guardiani, contano come nemici normali.
+				}
+
+				BossDefensePercent: {
+					Label: Difesa dei boss
+					Tooltip: Difesa dei boss * VALORE%. Il Mangiatore di mondi e alcune parti e servitori dei boss, come le mani di Skeletron e gli Occhi guardiani, contano come nemici normali.
+				}
+
+				BossDamagePercent: {
+					Label: Danni da contatto dei boss
+					Tooltip: Danni che i boss infliggono toccandoti * VALORE%. Il Mangiatore di mondi e alcune parti e servitori dei boss, come le mani di Skeletron e gli Occhi guardiani, contano come nemici normali.
+				}
+
 				PlayerMaxHealthPercent: {
 					Label: Vita massima del giocatore
 					Tooltip: Vita massima del giocatore * VALORE%. Mai sotto 1.

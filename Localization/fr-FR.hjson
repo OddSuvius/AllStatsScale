@@ -68,6 +68,21 @@ Mods: {
 					Tooltip: Défense des ennemis * VALEUR%
 				}
 
+				BossHealthPercent: {
+					Label: Vie des boss
+					Tooltip: Vie des boss * VALEUR%. Le Dévoreur des mondes et certaines parties et sbires de boss, comme les mains de Squeletron et les Suiveurs, comptent comme des ennemis normaux.
+				}
+
+				BossDefensePercent: {
+					Label: Défense des boss
+					Tooltip: Défense des boss * VALEUR%. Le Dévoreur des mondes et certaines parties et sbires de boss, comme les mains de Squeletron et les Suiveurs, comptent comme des ennemis normaux.
+				}
+
+				BossDamagePercent: {
+					Label: Dégâts de contact des boss
+					Tooltip: Dégâts infligés par les boss au contact * VALEUR%. Le Dévoreur des mondes et certaines parties et sbires de boss, comme les mains de Squeletron et les Suiveurs, comptent comme des ennemis normaux.
+				}
+
 				PlayerMaxHealthPercent: {
 					Label: Vie max. du joueur
 					Tooltip: Vie max. du joueur * VALEUR%. Jamais en dessous de 1.
